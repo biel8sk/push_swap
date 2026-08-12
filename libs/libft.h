@@ -6,7 +6,7 @@
 /*   By: gpires-c <gpires-c@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/27 20:15:07 by gpires-c          #+#    #+#             */
-/*   Updated: 2026/08/10 21:31:59 by gpires-c         ###   ########.fr       */
+/*   Updated: 2026/08/12 17:39:06 by gpires-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define LIBFT_H
 # include <stdlib.h>
 # include <unistd.h>
+# include <stdarg.h>
 
 int		ft_atoi(const char *str);
 void	ft_bzero(void *buffer, size_t size);
@@ -49,6 +50,14 @@ char	*ft_strtrim(char const *s1, char const *set);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 int		ft_tolower(int c);
 int		ft_toupper(int c);
+int		ft_printf(const char *input, ...);
+size_t	ft_putprt_fd(void *p, int fd);
+char	*ft_revert_str(char *str);
+void	ft_putunbr_fd(unsigned int n, int fd);
+size_t	ft_nlen_hex(unsigned long n);
+size_t	ft_puthex_fd(unsigned long number, char flag, int fd);
+size_t	ft_unumlen(unsigned int n);
+size_t	ft_numlen(int n);
 
 typedef struct s_list
 {
