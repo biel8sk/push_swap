@@ -1,34 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   stack_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gpires-c <gpires-c@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/08/10 21:35:32 by gpires-c          #+#    #+#             */
-/*   Updated: 2026/08/14 21:28:18 by gpires-c         ###   ########.fr       */
+/*   Created: 2026/08/12 19:50:20 by gpires-c          #+#    #+#             */
+/*   Updated: 2026/08/14 21:33:20 by gpires-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
-# include "../libs/libft.h"
+#include "push_swap.h"
 
-typedef struct s_stack {
-	int				content;
-	struct s_stack	*next;
-	struct s_stack	*previous;
-}	t_stack;
+t_stack	*ft_new_node(int content)
+{
+	t_stack	*new;
 
-typedef enum e_flag {
-	SIMPLE,
-	MEDIUM,
-	COMPLEX,
-	ADAPTATIVE,
-	INVALID,
-}	t_flag;
+	new = malloc(sizeof(t_stack));
+	if (!new)
+		return (NULL);
+	new->content = content;
+	new->previous = NULL;
+	new->next = NULL;
+}
 
-t_stack	*ft_new_node(int content);
-void	ft_push_node(t_stack **lst, t_stack *new);
+void	ft_push_node(t_stack **lst, t_stack *new)
+{
+	t_stack	*p;
 
-#endif
+	p = *lst;
+	if (!*lst)
+		*lst = new;
+	else
+	{
+		while (p->next != NULL)
+			p = p->next;
+		p->next = new;
+		new->previous = p;
+	}
+}

@@ -6,7 +6,7 @@
 /*   By: gpires-c <gpires-c@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/27 20:15:07 by gpires-c          #+#    #+#             */
-/*   Updated: 2026/08/12 17:39:06 by gpires-c         ###   ########.fr       */
+/*   Updated: 2026/08/12 19:44:29 by gpires-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,12 +74,5 @@ void	ft_lstdelone(t_list *lst, void (*del)(void *));
 void	ft_lstclear(t_list **lst, void (*del)(void *));
 void	ft_lstiter(t_list *lst, void (*f)(void *));
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
-
-typedef struct s_dlist
-{
-	int				*content;
-	struct s_dlist	*next;
-	struct s_dlist	*previous;
-}	t_dlst;
 
 #endif
