@@ -6,7 +6,7 @@
 /*   By: gpires-c <gpires-c@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/10 21:35:32 by gpires-c          #+#    #+#             */
-/*   Updated: 2026/08/14 21:28:18 by gpires-c         ###   ########.fr       */
+/*   Updated: 2026/08/15 21:34:58 by gpires-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,33 @@ typedef enum e_flag {
 	ADAPTATIVE,
 	INVALID,
 }	t_flag;
+
+typedef struct s_ops_count {
+	int	sa;
+	int	sb;
+	int	ss;
+	int	pa;
+	int	pb;
+	int	ra;
+	int	rb;
+	int	rr;
+	int	rra;
+	int	rrb;
+	int	rrr;
+}	t_ops_count;
+
+typedef struct s_ops {
+	char	*name;
+	void	(*f)(void);
+	int		count;
+}	t_ops;
+
+typedef struct s_program {
+	t_stack		*a;
+	t_stack		*b;
+	t_flag		fl;
+	t_ops_count	operations_count;
+}	t_program;
 
 t_stack	*ft_new_node(int content);
 void	ft_push_node(t_stack **lst, t_stack *new);
