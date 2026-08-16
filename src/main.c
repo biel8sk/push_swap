@@ -6,7 +6,7 @@
 /*   By: gpires-c <gpires-c@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/10 21:05:05 by gpires-c          #+#    #+#             */
-/*   Updated: 2026/08/15 21:01:01 by gpires-c         ###   ########.fr       */
+/*   Updated: 2026/08/16 01:54:19 by gpires-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ t_stack	*create_stack(char **argv, int argc)
 	{
 		element = ft_atoi(argv[i]);
 		if ((element == 0 && argv[i][0] != '0') || stack_contains(element, ptr))
-			return (NULL); // liberar a stack aq
+			return (stack_clear(&ptr), NULL);
 		node = ft_new_node(element);
 		if (!ptr)
 			ptr = node;
@@ -104,11 +104,5 @@ int	main(int argc, char **argv)
 	if (!stack)
 		return (write(2, "Error\n", 6));
 	disorder = compute_disorder(stack);
-	ft_printf("stack: ");
-	while (stack)
-	{
-		ft_printf("%d", stack->content);
-		stack = stack->next;
-	}
-	ft_printf("\nflag: %d\n", flag);
+	stack_clear(&stack);
 }

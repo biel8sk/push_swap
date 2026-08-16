@@ -6,7 +6,7 @@
 /*   By: gpires-c <gpires-c@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/10 21:35:32 by gpires-c          #+#    #+#             */
-/*   Updated: 2026/08/15 22:01:00 by gpires-c         ###   ########.fr       */
+/*   Updated: 2026/08/16 01:20:07 by gpires-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,5 +51,10 @@ typedef struct s_program {
 
 t_stack	*ft_new_node(int content);
 void	ft_push_node(t_stack **lst, t_stack *new);
+void	swap_top(t_stack **st);
+void	rotate(t_stack	**st);
+t_stack	*pop_first(t_stack **top);
+void	reverse_rotate(t_stack **st);
+void	stack_clear(t_stack **st);
 
 #endif

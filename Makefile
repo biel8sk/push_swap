@@ -1,13 +1,15 @@
-NAME		= push_swap
-CC			= cc
-C_FLAGS		= -Wall -Werror -Wextra -I includes
-SRCS	= 	main.c stack_utils.c
+NAME        = push_swap
+CC          = cc
+C_FLAGS     = -Wall -Werror -Wextra -I includes
+SRCS_FILES  = main.c stack_utils.c operations.c
+SRC_DIR     = src/
+SRCS        = $(addprefix $(SRC_DIR), $(SRCS_FILES))
 
-OBJ_FILES	= $(SRCS:.c=.o)
+OBJ_DIR     = obj
+OBJ_FILES   = $(SRCS:src/%.c=$(OBJ_DIR)/%.o)
 
-LIBS	= libs
-
-LIBFT	= $(LIBS)/libft.a
+LIBS        = libs
+LIBFT       = $(LIBS)/libft.a
 
 all: $(NAME)
 
@@ -15,13 +17,15 @@ $(LIBFT):
 	$(MAKE) -C $(LIBS)
 
 $(NAME): $(OBJ_FILES) $(LIBFT)
-	$(CC) $(C_FLAGS) $(OBJ_FILES) -L./libs -lft -o $(NAME)
+	$(CC) $(C_FLAGS) $(OBJ_FILES) -L$(LIBS) -lft  -g -o $(NAME)
 
-%.o : %.c $(LIBFT)
+$(OBJ_DIR)/%.o: src/%.c
+	mkdir -p $(OBJ_DIR)
 	$(CC) $(C_FLAGS) -c $< -o $@
 
-clean: 	
+clean: 
 	rm -f $(OBJ_FILES)
+	rm -rf $(OBJ_DIR)
 	$(MAKE) -C $(LIBS) clean
 
 fclean: clean

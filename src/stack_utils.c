@@ -6,7 +6,7 @@
 /*   By: gpires-c <gpires-c@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/12 19:50:20 by gpires-c          #+#    #+#             */
-/*   Updated: 2026/08/15 23:39:00 by gpires-c         ###   ########.fr       */
+/*   Updated: 2026/08/16 01:26:00 by gpires-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,45 +41,17 @@ void	ft_push_node(t_stack **lst, t_stack *new)
 	}
 }
 
-t_stack	*pop_first(t_stack **top)
+void	stack_clear(t_stack **st)
 {
-	t_stack	*node;
+	t_stack	*tmp;
 
-	if (!top || !*top)
-		return (NULL);
-	node = *top;
-	(*top)->next->previous = NULL;
-	*top = (*top)->next;
-	node->next = NULL;
-	node->previous = NULL;
-}
-
-void	rotate(t_stack	**st)
-{
-	t_stack	*first;
-	t_stack	*second;
-	t_stack	*last;
-
-	if (!st || !*st || !(*st)->next)
+	if (!st || !*st)
 		return ;
-	first = *st;
-	second = (*st)->next;
-	last = *st;
-	while (last->next)
-		last = last->next;
-	(*st) = second;
-	last->next = first;
-	first->previous = last;
-	first->next = NULL;
-}
-
-t_stack	*swap_top(t_stack **st)
-{
-	int	content;
-
-	if (!st || !*st || !(*st)->next)
-		return (NULL);
-	content = (*st)->content;
-	(*st)->content = (*st)->next->content;
-	(*st)->next->content = content;
+	while (*st)
+	{
+		tmp = *st;
+		*st = (*st)->next;
+		free(tmp);
+	}
+	*st = NULL;
 }
