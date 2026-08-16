@@ -6,7 +6,7 @@
 /*   By: gpires-c <gpires-c@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/12 19:50:20 by gpires-c          #+#    #+#             */
-/*   Updated: 2026/08/14 21:33:20 by gpires-c         ###   ########.fr       */
+/*   Updated: 2026/08/15 21:02:21 by gpires-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ t_stack	*ft_new_node(int content)
 	new->content = content;
 	new->previous = NULL;
 	new->next = NULL;
+	return (new);
 }
 
 void	ft_push_node(t_stack **lst, t_stack *new)

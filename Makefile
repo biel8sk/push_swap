@@ -1,7 +1,7 @@
 NAME		= push_swap
 CC			= cc
 C_FLAGS		= -Wall -Werror -Wextra -I includes
-SRCS	= 	main.c 
+SRCS	= 	main.c stack_utils.c
 
 OBJ_FILES	= $(SRCS:.c=.o)
 
