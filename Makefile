@@ -1,7 +1,7 @@
 NAME        = push_swap
 CC          = cc
 C_FLAGS     = -Wall -Werror -Wextra -I includes
-SRCS_FILES  = main.c stack_utils.c operations.c
+SRCS_FILES  = main.c stack_utils.c operations_base.c
 SRC_DIR     = src/
 SRCS        = $(addprefix $(SRC_DIR), $(SRCS_FILES))
 

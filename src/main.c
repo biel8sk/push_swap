@@ -6,22 +6,28 @@
 /*   By: gpires-c <gpires-c@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/10 21:05:05 by gpires-c          #+#    #+#             */
-/*   Updated: 2026/08/16 01:54:19 by gpires-c         ###   ########.fr       */
+/*   Updated: 2026/08/16 03:29:48 by gpires-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_flag	extract_flag(char *argv)
+t_flag	extract_flag(char *arg, double disorder)
 {
-	if (!ft_strncmp(argv, "--simple", 8))
+	if (!ft_strncmp(arg, "--simple", 8))
 		return (SIMPLE);
-	else if (!ft_strncmp(argv, "--medium", 8))
+	else if (!ft_strncmp(arg, "--medium", 8))
 		return (MEDIUM);
-	else if (!ft_strncmp(argv, "--complex", 9))
+	else if (!ft_strncmp(arg, "--complex", 9))
 		return (COMPLEX);
-	else if (!ft_strncmp(argv, "--adaptative", 11) || ft_isdigit(*argv))
-		return (ADAPTATIVE);
+	else if (!ft_strncmp(arg, "--adaptative", 11) || ft_isdigit(*arg))
+	{
+		if (disorder > 0.0 && disorder < 0.2)
+			return (SIMPLE);
+		else if (disorder >= 0.2 && disorder < 0.5)
+			return (MEDIUM);
+		return (COMPLEX);
+	}
 	return (INVALID);
 }
 
@@ -48,17 +54,6 @@ double	compute_disorder(t_stack *stack_a)
 		current = current->next;
 	}
 	return (mistakes / total_pairs);
-}
-
-int	stack_contains(int element, t_stack *st)
-{
-	while (st)
-	{
-		if (element == st->content)
-			return (1);
-		st = st->next;
-	}
-	return (0);
 }
 
 t_stack	*create_stack(char **argv, int argc)
@@ -93,16 +88,12 @@ int	main(int argc, char **argv)
 	t_flag	flag;
 	double	disorder;
 
-	flag = ADAPTATIVE;
 	if (argc < 3)
 		return (1);
-	if (argv[1][0] == '-')
-		flag = extract_flag(argv[1]);
-	if (flag == INVALID)
-		return (write(2, "Error\n", 6));
 	stack = create_stack(argv, argc);
 	if (!stack)
 		return (write(2, "Error\n", 6));
 	disorder = compute_disorder(stack);
+	flag = extract_flag(argv[1], disorder);
 	stack_clear(&stack);
 }

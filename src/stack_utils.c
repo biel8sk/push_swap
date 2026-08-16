@@ -6,7 +6,7 @@
 /*   By: gpires-c <gpires-c@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/12 19:50:20 by gpires-c          #+#    #+#             */
-/*   Updated: 2026/08/16 01:26:00 by gpires-c         ###   ########.fr       */
+/*   Updated: 2026/08/16 02:04:29 by gpires-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,4 +54,15 @@ void	stack_clear(t_stack **st)
 		free(tmp);
 	}
 	*st = NULL;
+}
+
+int	stack_contains(int element, t_stack *st)
+{
+	while (st)
+	{
+		if (element == st->content)
+			return (1);
+		st = st->next;
+	}
+	return (0);
 }
