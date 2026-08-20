@@ -6,7 +6,7 @@
 /*   By: gpires-c <gpires-c@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/10 21:05:05 by gpires-c          #+#    #+#             */
-/*   Updated: 2026/08/16 03:29:48 by gpires-c         ###   ########.fr       */
+/*   Updated: 2026/08/19 21:05:51 by gpires-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,16 @@ t_stack	*create_stack(char **argv, int argc)
 	return (ptr);
 }
 
+void	print_stack(t_stack *st)
+{
+	ft_putstr_fd("stack ordenada: ", 1);
+	while (st)
+	{
+		ft_printf("%d -> ", st->content);
+		st = st->next;
+	}
+}
+
 int	main(int argc, char **argv)
 {
 	t_stack	*stack;
@@ -95,5 +105,7 @@ int	main(int argc, char **argv)
 		return (write(2, "Error\n", 6));
 	disorder = compute_disorder(stack);
 	flag = extract_flag(argv[1], disorder);
+	sort_simple(&stack);
+	print_stack(stack);
 	stack_clear(&stack);
 }
