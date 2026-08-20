@@ -6,7 +6,7 @@
 /*   By: gpires-c <gpires-c@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/10 21:35:32 by gpires-c          #+#    #+#             */
-/*   Updated: 2026/08/16 03:53:35 by gpires-c         ###   ########.fr       */
+/*   Updated: 2026/08/19 21:05:23 by gpires-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,5 +69,7 @@ void	rr(t_program *p);
 void	rra(t_program *p);
 void	rrb(t_program *p);
 void	rrr(t_program *p);
+
+void	sort_simple(t_stack **st);
 
 #endif
