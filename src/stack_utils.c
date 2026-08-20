@@ -6,7 +6,7 @@
 /*   By: gpires-c <gpires-c@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/12 19:50:20 by gpires-c          #+#    #+#             */
-/*   Updated: 2026/08/16 02:04:29 by gpires-c         ###   ########.fr       */
+/*   Updated: 2026/08/19 21:54:57 by gpires-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,10 @@ void	ft_push_node(t_stack **lst, t_stack *new)
 		*lst = new;
 	else
 	{
-		while (p->next != NULL)
-			p = p->next;
-		p->next = new;
-		new->previous = p;
+		new->previous = NULL;
+		new->next = *lst;
+		(*lst)->previous = new;
+		(*lst) = new;
 	}
 }
 
