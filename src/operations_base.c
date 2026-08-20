@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   operations.c                                       :+:      :+:    :+:   */
+/*   operations_base.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gpires-c <gpires-c@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/15 22:47:08 by gpires-c          #+#    #+#             */
-/*   Updated: 2026/08/16 03:33:01 by gpires-c         ###   ########.fr       */
+/*   Updated: 2026/08/19 20:58:59 by gpires-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,11 @@ t_stack	*pop_first(t_stack **top)
 	if (!top || !*top)
 		return (NULL);
 	node = *top;
+	if (!(*top)->next)
+	{
+		(*top) = NULL;
+		return (node);
+	}
 	(*top)->next->previous = NULL;
 	*top = (*top)->next;
 	node->next = NULL;
