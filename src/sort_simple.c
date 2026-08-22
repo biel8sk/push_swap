@@ -6,7 +6,7 @@
 /*   By: daneves <daneves@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/19 19:49:27 by gpires-c          #+#    #+#             */
-/*   Updated: 2026/08/22 07:22:08 by daneves          ###   ########.fr       */
+/*   Updated: 2026/08/22 07:54:24 by daneves          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ void	sort_simple(t_program *p)
 	{
 		//p->b = find_first_b(p);
 		highest = find_highest_stack(p->a);
-		//ft_printf("\nHIGHEST: %d", highest);
+		ft_printf("\nHIGHEST: %d", highest);
 		// if (p->b == NULL || p->b->content > (p->a)->content)
 		// {
 		// 	pb(p);
