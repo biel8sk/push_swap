@@ -6,7 +6,7 @@
 /*   By: daneves <daneves@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/19 19:49:27 by gpires-c          #+#    #+#             */
-/*   Updated: 2026/08/22 07:19:21 by daneves          ###   ########.fr       */
+/*   Updated: 2026/08/22 07:22:08 by daneves          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ void	sort_simple(t_program *p)
 	{
 		//p->b = find_first_b(p);
 		highest = find_highest_stack(p->a);
-		ft_printf("\nHIGHEST: %d", highest);
+		//ft_printf("\nHIGHEST: %d", highest);
 		// if (p->b == NULL || p->b->content > (p->a)->content)
 		// {
 		// 	pb(p);
@@ -110,20 +110,20 @@ void	sort_simple(t_program *p)
 		// }
 		while (p->a->content != highest)
 		{
-			ft_printf("\nN MAIOR: %d", p->a->content);
+			//ft_printf("\nN MAIOR: %d", p->a->content);
 			ra(p);
 			// if (p->a->next)
 			// 	ra()
 			// else
 			// 	p->a = find_first_stack(p->a);
 		}
-		ft_printf("\nPA - HIGHEST: %d", p->a->content);
+		//ft_printf("\nPA - HIGHEST: %d", p->a->content);
 		//tmp = find_first_stack(p->a);
 		//ft_printf("\ntmp: %d", tmp->content);
 		pb(p);
 		//p->a = tmp;
-		print_st(p->a, 'a');
-		print_st(p->b, 'b');
+		//print_st(p->a, 'a');
+		//print_st(p->b, 'b');
 		// if (!p->a)
 		// 	ft_printf("\nvoltou?, a: %d", 99);
 		// ft_printf("\nvoltou?, be: %d", p->b->content);
