@@ -6,7 +6,7 @@
 /*   By: daneves <daneves@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/19 19:49:27 by gpires-c          #+#    #+#             */
-/*   Updated: 2026/08/22 08:06:52 by daneves          ###   ########.fr       */
+/*   Updated: 2026/08/22 08:20:33 by daneves          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,76 +67,18 @@ void	print_st(t_stack *p, char stack)
 
 void	sort_simple(t_program *p)
 {
-	t_stack	*tmp;
 	int		highest;
 
 	while (p->a)
 	{
-		//p->b = find_first_b(p);
-		ft_printf("\nWHILE: %d\n", p->a->content);
 		highest = find_highest_stack(p->a);
-		ft_printf("\nHIGHEST: %d\n", highest);
-		print_st(p->a, 'a');
-		// if (p->b == NULL || p->b->content > (p->a)->content)
-		// {
-		// 	pb(p);
-		// 	p->b->idx = idx++;
-		// 	ft_printf("\nidx: %d", p->b->idx);
-		// 	if (!p->a)
-		// 		break ;
-		// 	continue ;
-		// }
-		// if (p->b->next)
-		// {
-		// 	while (p->b->next && p->b->content < p->a->content)
-		// 	{
-		// 		p->b->idx = idx++;
-		// 		ft_printf("\nidx: %d", p->b->idx);
-		// 		p->b = p->b->next;
-		// 	}
-		// 	if (!p->b->next && p->b->content < p->a->content)
-		// 	{
-		// 		tmp = pop_first(&p->a);
-		// 		tmp->previous = p->b;
-		// 		p->b->next = tmp;
-		// 		p->b = find_first_b(p);
-		// 		continue ;
-		// 	}
-		// 	tmp = pop_first(&p->a);
-		// 	if (p->b->previous)
-		// 		p->b->previous->next = tmp;
-		// 	tmp->previous = p->b->previous;
-		// 	p->b->previous = tmp;
-		// 	tmp->next = p->b;
-		// 	p->b = find_first_b(p);
-		// 	continue ;
-		// }
 		while (p->a->content != highest)
-		{
-			//ft_printf("\nN MAIOR: %d", p->a->content);
 			ra(p);
-			// if (p->a->next)
-			// 	ra()
-			// else
-			// 	p->a = find_first_stack(p->a);
-		}
-		//ft_printf("\nPA - HIGHEST: %d", p->a->content);
-		//tmp = find_first_stack(p->a);
-		//ft_printf("\ntmp: %d", tmp->content);
 		pb(p);
-		//p->a = tmp;
-		//print_st(p->a, 'a');
-		//print_st(p->b, 'b');
-		// if (!p->a)
-		// 	ft_printf("\nvoltou?, a: %d", 99);
-		// ft_printf("\nvoltou?, be: %d", p->b->content);
-		// tmp = pop_first(&p->a);
-		// tmp->previous = p->b;
-		// p->b->next = tmp;
 	}
-	tmp = p->b;
-	p->b = p->a;
-	p->a = tmp;
+	while (p->b)
+	{
+		pa(p);
+		ra(p);
+	}
 }
-
-
