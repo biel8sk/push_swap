@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gpires-c <gpires-c@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: daneves <daneves@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/10 21:05:05 by gpires-c          #+#    #+#             */
-/*   Updated: 2026/08/21 23:16:38 by gpires-c         ###   ########.fr       */
+/*   Updated: 2026/08/22 08:09:30 by daneves          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ t_stack	*create_stack(char **argv, int argc)
 
 	i = 1;
 	ptr = NULL;
-	if (argv[i][0] == '-')
+	if (argv[i][0] == '-' && argv[i][1] == '-')
 		i++;
 	while (i < argc)
 	{

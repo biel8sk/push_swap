@@ -6,7 +6,7 @@
 /*   By: daneves <daneves@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/19 19:49:27 by gpires-c          #+#    #+#             */
-/*   Updated: 2026/08/22 07:54:24 by daneves          ###   ########.fr       */
+/*   Updated: 2026/08/22 08:06:52 by daneves          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,8 @@ int	find_highest_stack(t_stack *stack)
 {
 	int	highest;
 
-	highest = 0;
+	if (stack)
+		highest = stack->content;
 	while (stack)
 	{
 		if (stack->content >= highest)
@@ -72,8 +73,10 @@ void	sort_simple(t_program *p)
 	while (p->a)
 	{
 		//p->b = find_first_b(p);
+		ft_printf("\nWHILE: %d\n", p->a->content);
 		highest = find_highest_stack(p->a);
-		ft_printf("\nHIGHEST: %d", highest);
+		ft_printf("\nHIGHEST: %d\n", highest);
+		print_st(p->a, 'a');
 		// if (p->b == NULL || p->b->content > (p->a)->content)
 		// {
 		// 	pb(p);
