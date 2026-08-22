@@ -1,33 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_operations.c                                  :+:      :+:    :+:   */
+/*   compute_disorder.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gpires-c <gpires-c@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/08/19 19:31:58 by gpires-c          #+#    #+#             */
-/*   Updated: 2026/08/21 20:45:36 by gpires-c         ###   ########.fr       */
+/*   Created: 2026/08/21 20:34:09 by gpires-c          #+#    #+#             */
+/*   Updated: 2026/08/21 20:34:25 by gpires-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	pa(t_program *program)
+double	compute_disorder(t_stack *stack_a)
 {
-	t_stack	*node;
+	t_stack	*current;
+	t_stack	*next;
+	double	mistakes;
+	double	total_pairs;
 
-	node = pop_first(&program->b);
-	ft_push_node(&program->a, node);
-	ft_putstr_fd("pa\n", 1);
-	program->operations_count.pa++;
-}
-
-void	pb(t_program *program)
-{
-	t_stack	*node;
-
-	node = pop_first(&program->a);
-	ft_push_node(&program->b, node);
-	ft_putstr_fd("pb\n", 1);
-	program->operations_count.pb++;
+	mistakes = 0;
+	total_pairs = 0;
+	current = stack_a;
+	while (current->next)
+	{
+		next = current->next;
+		while (next)
+		{
+			total_pairs++;
+			if (current->content > next->content)
+				mistakes++;
+			next = next->next;
+		}
+		current = current->next;
+	}
+	return (mistakes / total_pairs);
 }

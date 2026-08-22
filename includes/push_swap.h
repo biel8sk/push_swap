@@ -6,7 +6,7 @@
 /*   By: gpires-c <gpires-c@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/10 21:35:32 by gpires-c          #+#    #+#             */
-/*   Updated: 2026/08/19 21:05:23 by gpires-c         ###   ########.fr       */
+/*   Updated: 2026/08/21 20:45:33 by gpires-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ typedef struct s_program {
 	t_stack		*a;
 	t_stack		*b;
 	t_flag		fl;
-	t_ops_count	operations_count;
+	t_ops_count operations_count;
 }	t_program;
 
 t_stack	*ft_new_node(int content);
@@ -57,6 +57,7 @@ t_stack	*pop_first(t_stack **top);
 void	reverse_rotate(t_stack **st);
 void	stack_clear(t_stack **st);
 int		stack_contains(int element, t_stack *st);
+double	compute_disorder(t_stack *stack_a);
 
 void	sa(t_program *p);
 void	sb(t_program *p);
@@ -70,6 +71,6 @@ void	rra(t_program *p);
 void	rrb(t_program *p);
 void	rrr(t_program *p);
 
-void	sort_simple(t_stack **st);
+void	sort_simple(t_program *p);
 
 #endif

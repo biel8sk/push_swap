@@ -6,35 +6,32 @@
 /*   By: gpires-c <gpires-c@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/19 19:49:27 by gpires-c          #+#    #+#             */
-/*   Updated: 2026/08/19 22:08:58 by gpires-c         ###   ########.fr       */
+/*   Updated: 2026/08/21 22:06:21 by gpires-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	insert_in_sorted_order(t_stack *node, t_stack **stack);
-
-void	sort_simple(t_stack **st)
+void	sort_simple(t_program *p)
 {
-	t_stack	*temp_node;
-
-	if (!*st)
-		return ;
-	temp_node = pop_first(st);
-	sort_simple(st);
-	insert_in_sorted_order(temp_node, st);
-}
-
-void	insert_in_sorted_order(t_stack *node, t_stack **stack)
-{
-	t_stack	*smaller;
-
-	if (*stack == NULL || node->content < (*stack)->content)
+	while (p->a)
 	{
-		ft_push_node(stack, node);
-		return ;
+		if (p->b == NULL || p->b->content < (p->a)->content)
+		{
+			pb(p);
+			if (!p->a)
+				break ;
+			continue ;
+		}
+		while (p->b && p->b->content < p->a->content)
+		{
+			p->b = p->b->next;
+		}
+		p->b->previous->next = p->a;
+		p->b->previous = p->a;
+		pa(p);
+		sa(p);
 	}
-	smaller = pop_first(stack);
-	insert_in_sorted_order(node, stack);
-	ft_push_node(stack, smaller);
+	while (p->b)
+		pa(p);
 }
