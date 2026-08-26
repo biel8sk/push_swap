@@ -6,7 +6,7 @@
 /*   By: gpires-c <gpires-c@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/16 03:33:44 by gpires-c          #+#    #+#             */
-/*   Updated: 2026/08/22 00:28:35 by gpires-c         ###   ########.fr       */
+/*   Updated: 2026/08/22 02:51:20 by gpires-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,5 +45,5 @@ void	rrb(t_program *program)
 		return ;
 	reverse_rotate(&program->b);
 	program->operations_count.rrb++;
-	ft_putstr_fd("rrb", 1);
+	ft_putstr_fd("rrb\n", 1);
 }
