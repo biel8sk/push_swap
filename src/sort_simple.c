@@ -6,7 +6,7 @@
 /*   By: gpires-c <gpires-c@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/19 19:49:27 by gpires-c          #+#    #+#             */
-/*   Updated: 2026/08/25 22:42:25 by gpires-c         ###   ########.fr       */
+/*   Updated: 2026/08/25 23:27:24 by gpires-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,17 +19,6 @@ t_stack	*find_first_b(t_program *p)
 		p->b = p->b->previous;
 	}
 	return (p->b);
-}
-
-void	print_st(t_stack *p, char stack)
-{
-	ft_printf("stack %c: ", stack);
-	while (p)
-	{
-		ft_printf("%d -> ", p->content);
-		p = p->next;
-	}
-	ft_putstr_fd("\n", 1);
 }
 
 int	is_sorted(t_stack *st)

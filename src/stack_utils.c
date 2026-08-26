@@ -6,7 +6,7 @@
 /*   By: gpires-c <gpires-c@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/12 19:50:20 by gpires-c          #+#    #+#             */
-/*   Updated: 2026/08/19 21:54:57 by gpires-c         ###   ########.fr       */
+/*   Updated: 2026/08/25 23:27:16 by gpires-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,4 +65,15 @@ int	stack_contains(int element, t_stack *st)
 		st = st->next;
 	}
 	return (0);
+}
+
+void	print_st(t_stack *p, char stack)
+{
+	ft_printf("stack %c: ", stack);
+	while (p)
+	{
+		ft_printf("%d -> ", p->content);
+		p = p->next;
+	}
+	ft_putstr_fd("\n", 1);
 }

@@ -6,7 +6,7 @@
 /*   By: gpires-c <gpires-c@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/10 21:35:32 by gpires-c          #+#    #+#             */
-/*   Updated: 2026/08/22 03:08:06 by gpires-c         ###   ########.fr       */
+/*   Updated: 2026/08/25 23:27:43 by gpires-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ void	reverse_rotate(t_stack **st);
 void	stack_clear(t_stack **st);
 int		stack_contains(int element, t_stack *st);
 double	compute_disorder(t_stack *stack_a);
+void	print_st(t_stack *p, char stack);
 
 void	sa(t_program *p);
 void	sb(t_program *p);
