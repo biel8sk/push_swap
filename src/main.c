@@ -3,10 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gpires-c <gpires-c@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: daneves <daneves@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/10 21:05:05 by gpires-c          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2026/08/22 03:29:38 by gpires-c         ###   ########.fr       */
+=======
+/*   Updated: 2026/08/22 08:09:30 by daneves          ###   ########.fr       */
+>>>>>>> dani
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,14 +44,14 @@ t_stack	*create_stack(char **argv, int argc, size_t *len)
 
 	i = 1;
 	ptr = NULL;
-	if (argv[i][0] == '-')
+	if (argv[i][0] == '-' && argv[i][1] == '-')
 		i++;
 	while (i < argc)
 	{
 		element = ft_atoi(argv[i]);
 		if ((element == 0 && argv[i][0] != '0') || stack_contains(element, ptr))
 			return (stack_clear(&ptr), NULL);
-		node = ft_new_node(element);
+		node = ft_new_node(element, len);
 		if (!ptr)
 			ptr = node;
 		else

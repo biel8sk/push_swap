@@ -3,10 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gpires-c <gpires-c@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: daneves <daneves@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/10 21:35:32 by gpires-c          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2026/08/22 03:08:06 by gpires-c         ###   ########.fr       */
+=======
+/*   Updated: 2026/08/22 02:53:38 by daneves          ###   ########.fr       */
+>>>>>>> dani
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +20,9 @@
 
 typedef struct s_stack {
 	int				content;
+	size_t			idx_start;
+	size_t			idx_end;
+	size_t			chuck;
 	struct s_stack	*next;
 	struct s_stack	*previous;
 }	t_stack;

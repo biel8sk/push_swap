@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   stack_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gpires-c <gpires-c@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: daneves <daneves@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/12 19:50:20 by gpires-c          #+#    #+#             */
-/*   Updated: 2026/08/19 21:54:57 by gpires-c         ###   ########.fr       */
+/*   Updated: 2026/08/26 01:00:42 by daneves          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_stack	*ft_new_node(int content)
+t_stack	*ft_new_node(int content, int idx_start)
 {
 	t_stack	*new;
 
@@ -22,6 +22,7 @@ t_stack	*ft_new_node(int content)
 	new->content = content;
 	new->previous = NULL;
 	new->next = NULL;
+	new->idx_start = idx_start;
 	return (new);
 }
 

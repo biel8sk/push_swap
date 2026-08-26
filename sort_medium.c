@@ -1,16 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort_simple.c                                      :+:      :+:    :+:   */
+/*   sort_medium.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: daneves <daneves@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/19 19:49:27 by gpires-c          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2026/08/25 22:42:25 by gpires-c         ###   ########.fr       */
-=======
-/*   Updated: 2026/08/22 08:20:33 by daneves          ###   ########.fr       */
->>>>>>> dani
+/*   Updated: 2026/08/22 09:09:56 by daneves          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +43,9 @@ int	find_highest_stack(t_stack *stack)
 {
 	int	highest;
 
-	if (stack)
-		highest = stack->content;
+	if (!stack)
+		return (0);
+	highest = stack->content;
 	while (stack)
 	{
 		if (stack->content >= highest)
@@ -69,37 +66,12 @@ void	print_st(t_stack *p, char stack)
 	ft_putstr_fd("\n", 1);
 }
 
-int	is_sorted(t_stack *st)
-{
-	if (!st)
-		return (0);
-	while (st->next)
-	{
-		if (st->next->content < st->content)
-			return (st->next->content < st->content);
-		st = st->next;
-	}
-	return (st->content < st->next->content);
-}
-
 void	sort_simple(t_program *p)
 {
 	int		highest;
 
 	while (p->a)
 	{
-<<<<<<< HEAD
-		if (p->b == NULL || p->a->content < p->b->content)
-		{
-			pb(p);
-			continue ;
-		}
-		while (p->b && p->b->content < p->a->content)
-		{
-			pa(p);
-			sa(p);
-		}
-=======
 		highest = find_highest_stack(p->a);
 		while (p->a->content != highest)
 			ra(p);
@@ -109,6 +81,5 @@ void	sort_simple(t_program *p)
 	{
 		pa(p);
 		ra(p);
->>>>>>> dani
 	}
 }
