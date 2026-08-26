@@ -6,41 +6,33 @@
 /*   By: daneves <daneves@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/26 02:06:19 by daneves           #+#    #+#             */
-/*   Updated: 2026/08/26 02:21:32 by daneves          ###   ########.fr       */
+/*   Updated: 2026/08/26 03:31:28 by daneves          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
 #include "push_swap.h"
 
-void	assign_rank(t_stack *a)
+void	assign_index_chunk(t_stack *a, int chunk_size)
 {
 	t_stack	*i;
 	t_stack	*j;
-	int		rank;
+	int		idx;
 
 	i = a;
 	while (i)
 	{
-		rank = 0;
+		idx = 0;
 		j = a;
 		while (j)
 		{
 			if (j->content < i->content)
-				rank++;
+				idx++;
 			j = j->next;
 		}
-		i->idx = rank;
+		i->idx = idx;
+		i->chunk = idx / chunk_size;
 		i = i->next;
-	}
-}
-
-void	assign_chunk(t_stack *a, int chunk_size)
-{
-	while (a)
-	{
-		a->chunk = a->idx / chunk_size;
-		a = a->next;
 	}
 }
 
@@ -59,27 +51,51 @@ int	ft_sqrt(int n)
 void	preprocess(t_program *p)
 {
 	int	n;
-	int	num_chunks;
-	int	chunk_size;
 
 	n = (int)p->len;
-	assign_rank(p->a);
-	num_chunks = ft_sqrt(n);
-	chunk_size = (n + num_chunks - 1) / num_chunks; //para arrendodar pra cima, n85 + ( num_chucks9 - 1) = 93 / 9 = 10. Se fosse 85 daria 9 e ssobrairam 4 ns
-	assign_chunk(p->a, chunk_size);
+	if (n <= 1)
+		return ;
+	p->num_chunks = ft_sqrt(n);
+	p->chunk_size = (n + p->num_chunks - 1) / p->num_chunks; //para arrendodar pra cima, [n]85 + ( [num_chucks]9 - 1) = 93 / 9 = 10. Se fosse 85 daria 9 e sobraria 4 ns
+	assign_index_chunk(p->a, p->chunk_size);
 }
 
 t_stack	*find_min_in_chunk(t_stack *a, int chunk_num)
 {
-	t_stack	*best;
+	t_stack	*min_stk;
 
-	best = NULL;
+	min_stk = NULL;
 	while (a)
 	{
 		if (a->chunk == chunk_num)
-			if (!best || a->content < best->content)
-				best = a;
+			if (!min_stk || a->content < min_stk->content)
+				min_stk = a;
 		a = a->next;
 	}
-	return (best);
+	return (min_stk);
+}
+
+void	push_by_chunks(t_program *p)
+{
+	int		c;
+	t_stack *min_stk;
+
+	c = 0;
+	while (c < p->num_chunks)
+	{
+		min_stk = find_min_in_chunk(p->a, c);
+		while (min_stk)
+		{
+			while (p->a->content != min_stk->content)
+				ra(p);
+			pb(p);
+			min_stk = find_min_in_chunk(p->a, c);
+		}
+		c++;
+	}
+	while (p->b)
+	{
+		pa(p);
+		ra(p);
+	}
 }

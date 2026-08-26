@@ -6,7 +6,7 @@
 /*   By: daneves <daneves@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/26 01:09:57 by daneves           #+#    #+#             */
-/*   Updated: 2026/08/26 02:10:19 by daneves          ###   ########.fr       */
+/*   Updated: 2026/08/26 02:54:18 by daneves          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,8 @@ typedef struct s_program {
 	t_flag		fl;
 	t_ops_count	operations_count;
 	size_t		len;
+	int			num_chunks;
+	int			chunk_size;
 }	t_program;
 
 t_stack	*ft_new_node(int content);
