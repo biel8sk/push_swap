@@ -6,7 +6,7 @@
 /*   By: gpires-c <gpires-c@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/10 21:05:05 by gpires-c          #+#    #+#             */
-/*   Updated: 2026/08/21 23:16:38 by gpires-c         ###   ########.fr       */
+/*   Updated: 2026/08/22 03:29:38 by gpires-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ t_flag	extract_flag(char *arg, double disorder)
 	return (INVALID);
 }
 
-t_stack	*create_stack(char **argv, int argc)
+t_stack	*create_stack(char **argv, int argc, size_t *len)
 {
 	int		i;
 	int		element;
@@ -53,7 +53,9 @@ t_stack	*create_stack(char **argv, int argc)
 		else
 			ft_push_node(&ptr, node);
 		i++;
+		(*len)++;
 	}
+	ft_printf("tamanho da stack: %u", *len);
 	return (ptr);
 }
 
@@ -67,7 +69,7 @@ void	print_stack(t_program *p)
 	}
 }
 
-t_program	*create_program(t_stack *st, t_flag fl)
+t_program	*create_program(t_stack *st, t_flag fl, size_t len)
 {
 	t_program	*p;
 	t_ops_count	*ops;
@@ -78,21 +80,12 @@ t_program	*create_program(t_stack *st, t_flag fl)
 	ops = malloc(sizeof(t_ops_count));
 	if (!ops)
 		return (free(p), NULL);
-	ops->pa = 0;
-	ops->pb = 0;
-	ops->ra = 0;
-	ops->rb = 0;
-	ops->sa = 0;
-	ops->sb = 0;
-	ops->rra = 0;
-	ops->rrb = 0;
-	ops->ss = 0;
-	ops->rr = 0;
-	ops->rrr = 0;
+	*ops = (t_ops_count){0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 	p->a = st;
 	p->b = NULL;
 	p->operations_count = *ops;
 	p->fl = fl;
+	p->len = len;
 	return (p);
 }
 
@@ -102,15 +95,17 @@ int	main(int argc, char **argv)
 	t_flag		flag;
 	double		disorder;
 	t_program	*p;
+	size_t		len;
 
 	if (argc < 3)
 		return (1);
-	stack = create_stack(argv, argc);
+	len = 0;
+	stack = create_stack(argv, argc, &len);
 	if (!stack)
 		return (write(2, "Error\n", 6));
 	disorder = compute_disorder(stack);
 	flag = extract_flag(argv[1], disorder);
-	p = create_program(stack, flag);
+	p = create_program(stack, flag, len);
 	sort_simple(p);
 	print_stack(p);
 	stack_clear(&stack);
