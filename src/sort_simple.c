@@ -5,14 +5,11 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: daneves <daneves@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/08/19 19:49:27 by gpires-c          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2026/08/25 22:42:25 by gpires-c         ###   ########.fr       */
-=======
-/*   Updated: 2026/08/22 08:20:33 by daneves          ###   ########.fr       */
->>>>>>> dani
+/*   Created: 2026/08/26 01:08:52 by daneves           #+#    #+#             */
+/*   Updated: 2026/08/26 01:09:23 by daneves          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 #include "push_swap.h"
 
@@ -88,18 +85,6 @@ void	sort_simple(t_program *p)
 
 	while (p->a)
 	{
-<<<<<<< HEAD
-		if (p->b == NULL || p->a->content < p->b->content)
-		{
-			pb(p);
-			continue ;
-		}
-		while (p->b && p->b->content < p->a->content)
-		{
-			pa(p);
-			sa(p);
-		}
-=======
 		highest = find_highest_stack(p->a);
 		while (p->a->content != highest)
 			ra(p);
@@ -109,6 +94,5 @@ void	sort_simple(t_program *p)
 	{
 		pa(p);
 		ra(p);
->>>>>>> dani
 	}
 }

@@ -5,14 +5,11 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: daneves <daneves@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/08/10 21:35:32 by gpires-c          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2026/08/22 03:08:06 by gpires-c         ###   ########.fr       */
-=======
-/*   Updated: 2026/08/22 02:53:38 by daneves          ###   ########.fr       */
->>>>>>> dani
+/*   Created: 2026/08/26 01:09:57 by daneves           #+#    #+#             */
+/*   Updated: 2026/08/26 01:10:03 by daneves          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
@@ -66,6 +63,7 @@ void	reverse_rotate(t_stack **st);
 void	stack_clear(t_stack **st);
 int		stack_contains(int element, t_stack *st);
 double	compute_disorder(t_stack *stack_a);
+void	print_st(t_stack *p, char stack);
 
 void	sa(t_program *p);
 void	sb(t_program *p);

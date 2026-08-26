@@ -6,7 +6,7 @@
 /*   By: daneves <daneves@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/12 19:50:20 by gpires-c          #+#    #+#             */
-/*   Updated: 2026/08/26 01:00:42 by daneves          ###   ########.fr       */
+/*   Updated: 2026/08/26 01:09:46 by daneves          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,4 +66,15 @@ int	stack_contains(int element, t_stack *st)
 		st = st->next;
 	}
 	return (0);
+}
+
+void	print_st(t_stack *p, char stack)
+{
+	ft_printf("stack %c: ", stack);
+	while (p)
+	{
+		ft_printf("%d -> ", p->content);
+		p = p->next;
+	}
+	ft_putstr_fd("\n", 1);
 }
