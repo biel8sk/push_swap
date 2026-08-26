@@ -6,7 +6,7 @@
 /*   By: daneves <daneves@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/26 01:08:52 by daneves           #+#    #+#             */
-/*   Updated: 2026/08/26 01:09:23 by daneves          ###   ########.fr       */
+/*   Updated: 2026/08/26 01:48:06 by daneves          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,16 +55,6 @@ int	find_highest_stack(t_stack *stack)
 	return (highest);
 }
 
-void	print_st(t_stack *p, char stack)
-{
-	ft_printf("stack %c: ", stack);
-	while (p)
-	{
-		ft_printf("%d -> ", p->content);
-		p = p->next;
-	}
-	ft_putstr_fd("\n", 1);
-}
 
 int	is_sorted(t_stack *st)
 {

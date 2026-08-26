@@ -2,7 +2,7 @@ NAME        = push_swap
 CC          = cc
 C_FLAGS     = -Wall -Werror -Wextra -I includes -g
 SRCS_FILES  = main.c stack_utils.c operations_base.c mult_operations_ps.c push_operations.c rotate_operations.c\
-			  sort_simple.c swap_operations.c compute_disorder.c
+			  sort_simple.c swap_operations.c compute_disorder.c sort_medium.c
 SRC_DIR     = src/
 SRCS        = $(addprefix $(SRC_DIR), $(SRCS_FILES))
 
@@ -24,7 +24,7 @@ $(OBJ_DIR)/%.o: src/%.c
 	mkdir -p $(OBJ_DIR)
 	$(CC) $(C_FLAGS) -c $< -o $@
 
-clean: 
+clean:
 	rm -f $(OBJ_FILES)
 	rm -rf $(OBJ_DIR)
 	$(MAKE) -C $(LIBS) clean

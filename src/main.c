@@ -6,11 +6,7 @@
 /*   By: daneves <daneves@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/10 21:05:05 by gpires-c          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2026/08/22 03:29:38 by gpires-c         ###   ########.fr       */
-=======
-/*   Updated: 2026/08/22 08:09:30 by daneves          ###   ########.fr       */
->>>>>>> dani
+/*   Updated: 2026/08/26 02:04:22 by daneves          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +47,7 @@ t_stack	*create_stack(char **argv, int argc, size_t *len)
 		element = ft_atoi(argv[i]);
 		if ((element == 0 && argv[i][0] != '0') || stack_contains(element, ptr))
 			return (stack_clear(&ptr), NULL);
-		node = ft_new_node(element, len);
+		node = ft_new_node(element);
 		if (!ptr)
 			ptr = node;
 		else

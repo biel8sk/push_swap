@@ -6,7 +6,7 @@
 /*   By: daneves <daneves@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/26 01:09:57 by daneves           #+#    #+#             */
-/*   Updated: 2026/08/26 01:10:03 by daneves          ###   ########.fr       */
+/*   Updated: 2026/08/26 02:10:19 by daneves          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,8 @@
 
 typedef struct s_stack {
 	int				content;
-	size_t			idx_start;
-	size_t			idx_end;
-	size_t			chuck;
+	int				idx;
+	int				chunk;
 	struct s_stack	*next;
 	struct s_stack	*previous;
 }	t_stack;

@@ -6,13 +6,13 @@
 /*   By: daneves <daneves@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/12 19:50:20 by gpires-c          #+#    #+#             */
-/*   Updated: 2026/08/26 01:09:46 by daneves          ###   ########.fr       */
+/*   Updated: 2026/08/26 02:05:47 by daneves          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_stack	*ft_new_node(int content, int idx_start)
+t_stack	*ft_new_node(int content)
 {
 	t_stack	*new;
 
@@ -22,7 +22,6 @@ t_stack	*ft_new_node(int content, int idx_start)
 	new->content = content;
 	new->previous = NULL;
 	new->next = NULL;
-	new->idx_start = idx_start;
 	return (new);
 }
 
