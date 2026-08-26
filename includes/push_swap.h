@@ -6,7 +6,7 @@
 /*   By: gpires-c <gpires-c@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/10 21:35:32 by gpires-c          #+#    #+#             */
-/*   Updated: 2026/08/21 20:45:33 by gpires-c         ###   ########.fr       */
+/*   Updated: 2026/08/22 03:08:06 by gpires-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,8 @@ typedef struct s_program {
 	t_stack		*a;
 	t_stack		*b;
 	t_flag		fl;
-	t_ops_count operations_count;
+	t_ops_count	operations_count;
+	size_t		len;
 }	t_program;
 
 t_stack	*ft_new_node(int content);
