@@ -18,7 +18,7 @@ $(LIBFT):
 	$(MAKE) -C $(LIBS)
 
 $(NAME): $(OBJ_FILES) $(LIBFT)
-	$(CC) $(C_FLAGS) $(OBJ_FILES) -L$(LIBS) -lft -o $(NAME)
+	$(CC) $(C_FLAGS) $(OBJ_FILES) -L$(LIBS) -lft -o $(NAME) -g
 
 $(OBJ_DIR)/%.o: src/%.c
 	mkdir -p $(OBJ_DIR)

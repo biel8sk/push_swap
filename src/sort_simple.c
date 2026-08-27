@@ -24,11 +24,12 @@
 
 t_stack	*find_first_b(t_program *p)
 {
-	while (p->b && p->b->previous)
-	{
-		p->b = p->b->previous;
-	}
-	return (p->b);
+	t_stack	*tmp;
+
+	tmp = p->b;
+	while (tmp && tmp->previous)
+		tmp = tmp->previous;
+	return (tmp);
 }
 
 t_stack	*find_first_stack(t_stack *stack)
@@ -79,10 +80,15 @@ void	sort_simple(t_program *p)
 		while (p->a->content != highest)
 			ra(p);
 		pb(p);
+		
 	}
+	print_st(p->b, 'b');
 	while (p->b)
 	{
 		pa(p);
 		ra(p);
 	}
+	
+	print_st(p->a, 'a');
 }
+	

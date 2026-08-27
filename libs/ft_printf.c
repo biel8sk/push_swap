@@ -88,9 +88,9 @@ int	ft_printf(char const *input, ...)
 	char	*arg;
 	size_t	i;
 	size_t	char_count;
-	char	*known_args;
+	//char	*known_args;
 
-	known_args = "cspdiuxX%";
+	//known_args = "cspdiuxX%";
 	va_start(args, input);
 	i = 0;
 	char_count = 0;

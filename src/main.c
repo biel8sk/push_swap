@@ -106,7 +106,7 @@ int	main(int argc, char **argv)
 	disorder = compute_disorder(stack);
 	flag = extract_flag(argv[1], disorder);
 	p = create_program(stack, flag, len);
-	sort_simple(p);
+	sort_medium(p);
 	print_stack(p);
 	stack_clear(&stack);
 }

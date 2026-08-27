@@ -79,5 +79,6 @@ void	rrb(t_program *p);
 void	rrr(t_program *p);
 
 void	sort_simple(t_program *p);
+void	sort_medium(t_program *p);
 
 #endif

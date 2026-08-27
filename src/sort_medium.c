@@ -60,27 +60,28 @@ void	preprocess(t_program *p)
 	assign_index_chunk(p->a, p->chunk_size);
 }
 
-t_stack	*find_min_in_chunk(t_stack *a, int chunk_num)
+t_stack	*find_min_in_chunk(t_stack *stk, int chunk_num)
 {
 	t_stack	*min_stk;
 
 	min_stk = NULL;
-	while (a)
+	while (stk)
 	{
-		if (a->chunk == chunk_num)
-			if (!min_stk || a->content < min_stk->content)
-				min_stk = a;
-		a = a->next;
+		if (stk->chunk == chunk_num)
+			if (!min_stk || stk->content < min_stk->content)
+				min_stk = stk;
+		stk = stk->next;
 	}
 	return (min_stk);
 }
 
-void	push_by_chunks(t_program *p)
+void	sort_medium(t_program *p)
 {
 	int		c;
 	t_stack *min_stk;
 
 	c = 0;
+	preprocess(p);
 	while (c < p->num_chunks)
 	{
 		min_stk = find_min_in_chunk(p->a, c);
@@ -89,13 +90,11 @@ void	push_by_chunks(t_program *p)
 			while (p->a->content != min_stk->content)
 				ra(p);
 			pb(p);
-			min_stk = find_min_in_chunk(p->a, c);
 		}
 		c++;
 	}
 	while (p->b)
 	{
 		pa(p);
-		ra(p);
 	}
 }
