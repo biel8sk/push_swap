@@ -64,7 +64,7 @@ void	reverse_rotate(t_stack **st);
 void	stack_clear(t_stack **st);
 int		stack_contains(int element, t_stack *st);
 double	compute_disorder(t_stack *stack_a);
-void	print_st(t_stack *p, char stack);
+void	print_st(t_stack *stk, char stack);
 
 void	sa(t_program *p);
 void	sb(t_program *p);

@@ -64,13 +64,13 @@ int	stack_contains(int element, t_stack *st)
 	return (0);
 }
 
-void	print_st(t_stack *p, char stack)
+void	print_st(t_stack *stk, char stack)
 {
 	ft_printf("stack %c: ", stack);
-	while (p)
+	while (stk)
 	{
-		ft_printf("%d -> ", p->content);
-		p = p->next;
+		ft_printf("%d -> ", stk->content);
+		stk = stk->next;
 	}
 	ft_putstr_fd("\n", 1);
 }
