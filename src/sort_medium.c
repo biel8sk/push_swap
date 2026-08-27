@@ -75,12 +75,13 @@ t_stack	*find_min_in_chunk(t_stack *a, int chunk_num)
 	return (min_stk);
 }
 
-void	push_by_chunks(t_program *p)
+void	sort_medium(t_program *p)
 {
 	int		c;
 	t_stack *min_stk;
 
 	c = 0;
+	preprocess(p);
 	while (c < p->num_chunks)
 	{
 		min_stk = find_min_in_chunk(p->a, c);
@@ -96,6 +97,6 @@ void	push_by_chunks(t_program *p)
 	while (p->b)
 	{
 		pa(p);
-		ra(p);
+		//ra(p);
 	}
 }

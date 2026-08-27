@@ -17,10 +17,10 @@ size_t	ft_unumlen(unsigned int n)
 	size_t	len;
 
 	len = 1;
-	if (n < 0)
-	{
-		len++;
-	}
+	// if (n < 0)
+	// {
+	// 	len++;
+	// }
 	while (n > 9)
 	{
 		n /= 10;

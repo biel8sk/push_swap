@@ -27,9 +27,6 @@ t_stack	*ft_new_node(int content)
 
 void	ft_push_node(t_stack **lst, t_stack *new)
 {
-	t_stack	*p;
-
-	p = *lst;
 	if (!*lst)
 		*lst = new;
 	else
