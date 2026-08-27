@@ -18,6 +18,8 @@ void	pa(t_program *program)
 
 	node = pop_first(&program->b);
 	ft_push_node(&program->a, node);
+	if (!program->a_tail)
+		program->a_tail = node;
 	ft_putstr_fd("pa\n", 1);
 	program->operations_count.pa++;
 }
@@ -28,6 +30,8 @@ void	pb(t_program *program)
 
 	node = pop_first(&program->a);
 	ft_push_node(&program->b, node);
+	if (!program->b_tail)
+		program->b_tail = node;
 	ft_putstr_fd("pb\n", 1);
 	program->operations_count.pb++;
 }

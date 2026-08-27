@@ -35,9 +35,9 @@ void	rr(t_program *program)
 	a = program->a;
 	b = program->b;
 	if (a && a->next)
-		rotate(&a);
+		rotate(&a, &program->a_tail);
 	if (b && b->next)
-		rotate(&b);
+		rotate(&b, &program->b_tail);
 	program->operations_count.ss++;
 	ft_putstr_fd("rr\n", 1);
 }

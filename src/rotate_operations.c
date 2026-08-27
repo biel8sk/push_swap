@@ -16,7 +16,7 @@ void	ra(t_program *program)
 {
 	if (!program || !program->a)
 		return ;
-	rotate(&program->a);
+	rotate(&program->a, &program->a_tail);
 	program->operations_count.ra++;
 	ft_putstr_fd("ra\n", 1);
 }
@@ -25,7 +25,7 @@ void	rb(t_program *program)
 {
 	if (!program || !program->b)
 		return ;
-	rotate(&program->b);
+	rotate(&program->b, &program->b_tail);
 	program->operations_count.rb++;
 	ft_putstr_fd("rb\n", 1);
 }

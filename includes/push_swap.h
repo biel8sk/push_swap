@@ -47,7 +47,9 @@ typedef struct s_ops_count {
 
 typedef struct s_program {
 	t_stack		*a;
+	t_stack		*a_tail;
 	t_stack		*b;
+	t_stack		*b_tail;
 	t_flag		fl;
 	t_ops_count	operations_count;
 	size_t		len;
@@ -57,8 +59,10 @@ typedef struct s_program {
 
 t_stack	*ft_new_node(int content);
 void	ft_push_node(t_stack **lst, t_stack *new);
+void	fix_stack_tail(t_stack **stk, t_stack **tail);
 void	swap_top(t_stack **st);
-void	rotate(t_stack	**st);
+//void	rotate(t_stack	**st);
+void	rotate(t_stack **stk, t_stack **stk_tail);
 t_stack	*pop_first(t_stack **top);
 void	reverse_rotate(t_stack **st);
 void	stack_clear(t_stack **st);
