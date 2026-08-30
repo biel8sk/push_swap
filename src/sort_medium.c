@@ -17,35 +17,23 @@ void	assign_index_chunk(t_stack *a, int chunk_size)
 {
 	t_stack	*i;
 	t_stack	*j;
-	int		idx;
+	int		count;
 
 	i = a;
 	while (i)
 	{
-		idx = 0;
+		count = 0;
 		j = a;
 		while (j)
 		{
 			if (j->content < i->content)
-				idx++;
+				count++;
 			j = j->next;
 		}
-		i->idx = idx;
-		i->chunk = idx / chunk_size;
+		i->rank = count;
+		i->chunk = count / chunk_size;
 		i = i->next;
 	}
-}
-
-int	ft_sqrt(int n)
-{
-	int	i;
-
-	if (n <= 0)
-		return (0);
-	i = 0;
-	while (i * i <= n)
-		i++;
-	return (i - 1);
 }
 
 void	preprocess(t_program *p)
@@ -60,37 +48,46 @@ void	preprocess(t_program *p)
 	assign_index_chunk(p->a, p->chunk_size);
 }
 
-t_stack	*find_min_in_chunk(t_stack *a, int chunk_num)
+int	has_chunk(t_stack *stk, int c)
 {
-	t_stack	*min_stk;
-
-	min_stk = NULL;
-	while (a)
+	while (stk)
 	{
-		if (a->chunk == chunk_num)
-			if (!min_stk || a->content < min_stk->content)
-				min_stk = a;
-		a = a->next;
+		if (stk->chunk == c)
+			return (1);
+		stk = stk->next;
 	}
-	return (min_stk);
+	return (0);
 }
+
+// t_stack	*find_min_in_chunk(t_stack *a, int chunk_num)
+// {
+// 	t_stack	*min_stk;
+
+// 	min_stk = NULL;
+// 	while (a)
+// 	{
+// 		if (a->chunk == chunk_num)
+// 			if (!min_stk || a->rank < min_stk->rank)
+// 				min_stk = a;
+// 		a = a->next;
+// 	}
+// 	return (min_stk);
+// }
 
 void	sort_medium(t_program *p)
 {
 	int		c;
-	t_stack *min_stk;
 
 	c = 0;
 	preprocess(p);
 	while (c < p->num_chunks)
 	{
-		min_stk = find_min_in_chunk(p->a, c);
-		while (min_stk)
+		while (has_chunk(p->a, c))
 		{
-			while (p->a->content != min_stk->content)
+			if (p->a->chunk <= c)
+				pb(p);
+			else
 				ra(p);
-			pb(p);
-			min_stk = find_min_in_chunk(p->a, c);
 		}
 		c++;
 	}
@@ -100,3 +97,6 @@ void	sort_medium(t_program *p)
 		//ra(p);
 	}
 }
+
+//Veeer::::
+// Será que pra complex conseguimos deixar metade dos chunks em a e ir trabalhando ao mesmo tempo?

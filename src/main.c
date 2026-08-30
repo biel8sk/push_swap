@@ -35,7 +35,10 @@ t_flag	extract_flag(char *arg, double disorder)
  * Problema: ft_push_node sempre insere na FRENTE, entao o ULTIMO
  * argumento acaba no topo. O subject pede o contrario: "the first
  * argument is the top of the stack".
-t_stack	*create_stack(char **argv, int argc, size_t *len)
+ * 
+------------------------------------------------------------------- */
+
+/* t_stack	*create_stack(char **argv, int argc, size_t *len)
 {
 	int		i;
 	int		element;
@@ -61,9 +64,7 @@ t_stack	*create_stack(char **argv, int argc, size_t *len)
 	}
 	ft_printf("tamanho da stack: %u", *len);
 	return (ptr);
-}
-------------------------------------------------------------------- */
-
+} */
 t_stack	*create_stack(char **argv, int argc, size_t *len)
 {
 	int		i;
@@ -149,9 +150,9 @@ int	main(int argc, char **argv)
 	disorder = compute_disorder(stack);
 	flag = extract_flag(argv[1], disorder);
 	p = create_program(stack, flag, len);
-	ft_printf("Stack Criada!!!!\n");
-	print_st(p->a, 'a');
-	//sort_medium(p);
+	// ft_printf("Stack Criada!!!!\n");
+	// print_st(p->a, 'a');
+	sort_medium(p);
 	print_stack(p);
 	stack_clear(&stack);
 }
