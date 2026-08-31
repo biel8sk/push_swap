@@ -70,13 +70,31 @@ void	reverse_rotate(t_stack **st)
 	*st = last;
 }
 
+// void	swap_top(t_stack **st)
+// {
+// 	int	content;
+
+// 	if (!st || !*st || !(*st)->next)
+// 		return ;
+// 	content = (*st)->content;
+// 	(*st)->content = (*st)->next->content;
+// 	(*st)->next->content = content;
+// }
+
 void	swap_top(t_stack **st)
 {
-	int	content;
+	t_stack	*first;
+	t_stack	*second;
 
 	if (!st || !*st || !(*st)->next)
 		return ;
-	content = (*st)->content;
-	(*st)->content = (*st)->next->content;
-	(*st)->next->content = content;
+	first = *st;
+	second = first->next;
+	first->next = second->next;
+	if (second->next)
+		second->next->previous = first;
+	second->previous = NULL;
+	second->next = first;
+	first->previous = second;
+	*st = second;
 }

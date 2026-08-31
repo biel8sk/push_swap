@@ -12,14 +12,23 @@
 
 #include "push_swap.h"
 
+// void	sa(t_program *p)
+// {
+// 	t_stack	*st;
+
+// 	st = p->a;
+// 	if (!st || !st->next)
+// 		return ;
+// 	swap_top(&st);
+// 	p->operations_count.sa++;
+// 	ft_putstr_fd("sa\n", 1);
+// }
+
 void	sa(t_program *p)
 {
-	t_stack	*st;
-
-	st = p->a;
-	if (!st || !st->next)
+	if (!p->a || !p->a->next)
 		return ;
-	swap_top(&st);
+	swap_top(&p->a);
 	p->operations_count.sa++;
 	ft_putstr_fd("sa\n", 1);
 }

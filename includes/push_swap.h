@@ -65,6 +65,7 @@ void	stack_clear(t_stack **st);
 int		stack_contains(int element, t_stack *st);
 double	compute_disorder(t_stack *stack_a);
 void	print_st(t_stack *stk, char stack);
+void	sort_simple_stk(t_program *p, char stk_name);
 
 int		ft_sqrt(int n);
 
