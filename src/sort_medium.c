@@ -80,7 +80,7 @@ void	sort_medium(t_program *p)
 
 	c = 0;
 	preprocess(p);
-	while (c < p->num_chunks)
+	while (c < p->num_chunks - 1)
 	{
 		while (has_chunk(p->a, c))
 		{
@@ -91,6 +91,9 @@ void	sort_medium(t_program *p)
 		}
 		c++;
 	}
+	
+	print_st(p->a, 'a');
+	print_st(p->b, 'b');
 	while (p->b)
 	{
 		pa(p);
