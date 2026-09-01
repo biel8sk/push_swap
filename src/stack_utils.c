@@ -27,15 +27,15 @@ t_stack	*ft_new_node(int content)
 
 void	ft_push_node(t_stack **lst, t_stack *new)
 {
+	new->previous = NULL;
 	if (!*lst)
-		*lst = new;
+		new->next = NULL;
 	else
 	{
-		new->previous = NULL;
 		new->next = *lst;
 		(*lst)->previous = new;
-		(*lst) = new;
 	}
+	*lst = new;
 }
 
 void	stack_clear(t_stack **st)

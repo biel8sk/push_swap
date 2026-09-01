@@ -92,33 +92,3 @@ void	print_rank(t_stack *stk)
 	ft_printf("\n");
 }
 
-void	sort_simple_stk(t_program *p, char stk_name)
-{
-	t_stack	**stk;
-	int		count;
-
-	if (stk_name == 'a')
-		stk = &p->a;
-	if (stk_name == 'b')
-		stk = &p->b;
-	count = 0;
-		ft_printf("IS SORTED: %d\n", stk_is_sorted(*stk));
-	ft_printf("IS SORTED: %d\n", stk_is_sorted(*stk));
-	ft_printf("\nRANK:\n");
-	print_rank(*stk);
-	while (!stk_is_sorted(*stk) && count <= 9)
-	{
-		ft_printf("NOT SORTED\n");
-		if ((*stk)->rank > (*stk)->next->rank)
-			swap_stk(p, stk_name);
-		else
-			rotate_stk(p, stk_name);
-		print_st(*stk, 'a');
-		ft_printf("CURR COUNT: %d\n", count);
-		ft_printf("IS SORTED: %d\n", stk_is_sorted(*stk));
-		ft_printf("\nRANK:\n");
-		print_rank(*stk);
-		count++;
-	}
-	return ;
-}

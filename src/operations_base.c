@@ -20,12 +20,12 @@ t_stack	*pop_first(t_stack **top)
 		return (NULL);
 	node = *top;
 	if (!(*top)->next)
+		*top = NULL;
+	else
 	{
-		(*top) = NULL;
-		return (node);
+		(*top)->next->previous = NULL;
+		*top = (*top)->next;
 	}
-	(*top)->next->previous = NULL;
-	*top = (*top)->next;
 	node->next = NULL;
 	node->previous = NULL;
 	return (node);

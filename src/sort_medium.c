@@ -43,10 +43,28 @@ void	preprocess(t_program *p)
 	n = (int)p->len;
 	if (n <= 1)
 		return ;
-	p->num_chunks = ft_sqrt(n);
+	p->num_chunks = ft_sqrt(n) / 3;
+	if (p->num_chunks < 1)
+	p->num_chunks = 1;
 	p->chunk_size = (n + p->num_chunks - 1) / p->num_chunks; //para arrendodar pra cima, [n]85 + ( [num_chucks]9 - 1) = 93 / 9 = 10. Se fosse 85 daria 9 e sobraria 4 ns
 	assign_labels(p->a, p->chunk_size);
 }
+
+// void	preprocess(t_program *p)
+// {
+// 	int		n;
+// 	char	*env;
+
+// 	n = (int)p->len;
+// 	if (n <= 1)
+// 		return ;
+// 	p->num_chunks = ft_sqrt(n);
+// 	env = getenv("PS_CHUNKS");
+// 	if (env)
+// 		p->num_chunks = ft_atoi(env);
+// 	p->chunk_size = (n + p->num_chunks - 1) / p->num_chunks;
+// 	assign_labels(p->a, p->chunk_size);
+// }
 
 int	has_chunk(t_stack *stk, int c)
 {
@@ -103,6 +121,8 @@ void	sort_medium(t_program *p)
 	int		c;
 	t_move	m;
 
+	if (p->len <= 1)
+		return ;
 	c = 0;
 	preprocess(p);
 	while (c < p->num_chunks)
@@ -116,24 +136,11 @@ void	sort_medium(t_program *p)
 		}
 		c++;
 	}
-	ft_putstr_fd("ranks em B: ", 2);
-	t_stack *t = p->b;
-	while (t)
-	{
-		ft_printfd(2, "%d ", t->rank);
-		t = t->next;
-	}
-	ft_putstr_fd("\n", 2);
 	init_a(p);
 	while (p->b)
 	{
 		m = best_move_ba(p);
-		//ft_printfd(2, "a=%d b=%d cost=%d\n", p->len_a, p->len_b, m.cost);
 		execute_move_ba(p, &m);
-		ft_putstr_fd("B: ", 2);
-		t_stack *t = p->b;
-		while (t) { ft_printfd(2, "%d ", t->rank); t = t->next; }
-		ft_putstr_fd("\n", 2);
 	}
 	while (p->b)
 	{
