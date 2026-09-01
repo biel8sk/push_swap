@@ -130,7 +130,7 @@ void	execute_move_ba(t_program *p, t_move *m)
 		if (m->dir_a == 1)
 			ra(p);
 		else
-			rra;
+			rra(p);
 		m->rot_a--;
 	}
 	while (m->rot_b > 0)
@@ -138,7 +138,7 @@ void	execute_move_ba(t_program *p, t_move *m)
 		if (m->dir_a == 1)
 			rb(p);
 		else
-			rrb;
+			rrb(p);
 		m->rot_b--;
 	}
 	pa(p);
