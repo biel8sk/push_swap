@@ -105,7 +105,6 @@ void	sort_medium(t_program *p)
 
 	c = 0;
 	preprocess(p);
-	print_st(p->a, 'a');
 	while (c < p->num_chunks)
 	{
 		while (has_chunk(p->a, c))
@@ -117,15 +116,11 @@ void	sort_medium(t_program *p)
 		}
 		c++;
 	}
-	print_st(p->b, 'b');
 	init_a(p);
-	print_st(p->a, 'a');
 	while (p->b)
 	{
 		m = best_move_ba(p);
 		execute_move_ba(p, &m);
-		//pa(p);
-		//ra(p);
 	}
 	align_a(p);
 }
