@@ -12,45 +12,26 @@
 
 #include "push_swap.h"
 
-void	ss(t_program *program)
+void	ss(t_program *p)
 {
-	t_stack	*a;
-	t_stack	*b;
-
-	a = program->a;
-	b = program->b;
-	if (a && a->next)
-		swap_top(&a);
-	if (b && b->next)
-		swap_top(&b);
-	program->operations_count.ss++;
+	swap_top(&p->a);
+	swap_top(&p->b);
+	p->operations_count.ss++;
 	ft_putstr_fd("ss\n", 1);
 }
 
-void	rr(t_program *program)
+void	rr(t_program *p)
 {
-	t_stack	*a;
-	t_stack	*b;
-
-	a = program->a;
-	b = program->b;
-	if (a && a->next)
-		rotate(&a);
-	if (b && b->next)
-		rotate(&b);
-	program->operations_count.ss++;
+	rotate(&p->a);
+	rotate(&p->b);
+	p->operations_count.rr++;
 	ft_putstr_fd("rr\n", 1);
 }
 
-void	rrr(t_program *program)
+void	rrr(t_program *p)
 {
-	t_stack	*a;
-	t_stack	*b;
-
-	a = program->a;
-	b = program->b;
-	reverse_rotate(&a);
-	reverse_rotate(&b);
-	program->operations_count.ss++;
-	ft_putstr_fd("ss\n", 1);
+	reverse_rotate(&p->a);
+	reverse_rotate(&p->b);
+	p->operations_count.rrr++;
+	ft_putstr_fd("rrr\n", 1);
 }

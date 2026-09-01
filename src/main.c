@@ -97,7 +97,7 @@ t_stack	*create_stack(char **argv, int argc, size_t *len)
 		i++;
 		(*len)++;
 	}
-	ft_printf("tamanho da stack: %u", *len);
+	ft_printfd(2, "tamanho da stack: %u\n", *len);
 	return (stk);
 }
 
@@ -105,12 +105,16 @@ t_stack	*create_stack(char **argv, int argc, size_t *len)
 
 void	print_stack(t_program *p)
 {
-	ft_putstr_fd("stack ordenada: ", 1);
-	while (p->a)
+	t_stack	*curr;
+
+	curr = p->a;
+	ft_putstr_fd("stack ordenada: ", 2);
+	while (curr)
 	{
-		ft_printf("%d -> ", p->a->content);
-		p->a = p->a->next;
+		ft_printfd(2, "%d -> ", curr->content);
+		curr = curr->next;
 	}
+	ft_putstr_fd("\n", 2);
 }
 
 t_program	*create_program(t_stack *st, t_flag fl, size_t len)

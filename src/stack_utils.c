@@ -66,11 +66,11 @@ int	stack_contains(int element, t_stack *st)
 
 void	print_st(t_stack *stk, char stack)
 {
-	ft_printf("stack %c: ", stack);
+	ft_printfd(2, "stack %c: ", stack);
 	while (stk)
 	{
-		ft_printf("%d -> ", stk->content);
+		ft_printfd(2, "%d -> ", stk->content);
 		stk = stk->next;
 	}
-	ft_putstr_fd("\n", 1);
+	ft_putstr_fd("\n", 2);
 }

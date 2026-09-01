@@ -82,9 +82,16 @@ int	find_insert_pos(t_stack *stk, int curr_rank, int len_stk)
 void	move_cost_ba(t_program *p, t_stack *node_b, t_move *m)
 {
 	int	target_pos_a;
+	t_stack	*t;      /* debug */
 
 	m->rot_b = rotate_cost(node_b->pos, p->len_b, &m->dir_b);
 	target_pos_a = find_insert_pos(p->a, node_b->rank, p->len);
+	ft_printfd(2, "  cand rank=%d target=%d len_a=%d\n",
+	node_b->rank, target_pos_a, p->len_a);
+	ft_putstr_fd("A: ", 2);
+	t = p->a;
+	while (t) { ft_printfd(2, "%d ", t->rank); t = t->next; }
+	ft_putstr_fd("\n", 2);
 	m->rot_a = rotate_cost(target_pos_a, p->len_a, &m->dir_a);
 	if (m->dir_a == m->dir_b)
 		m->cost = ft_max(m->rot_a, m->rot_b);
@@ -116,6 +123,8 @@ t_move	best_move_ba(t_program *p)
 
 void	execute_move_ba(t_program *p, t_move *m)
 {
+	ft_printfd(2, "exec: rank=%d rot_a=%d dir_a=%d rot_b=%d dir_b=%d target=?\n",
+	m->node->rank, m->rot_a, m->dir_a, m->rot_b, m->dir_b);
 	while (m->rot_a > 0 && m->rot_b > 0 && m->dir_a == m->dir_b)
 	{
 		if (m->dir_a == 1)

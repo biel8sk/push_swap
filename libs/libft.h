@@ -51,6 +51,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len);
 int		ft_tolower(int c);
 int		ft_toupper(int c);
 int		ft_printf(const char *input, ...);
+int		ft_printfd(int fd, char const *input, ...);
 size_t	ft_putprt_fd(void *p, int fd);
 char	*ft_revert_str(char *str);
 void	ft_putunbr_fd(unsigned int n, int fd);

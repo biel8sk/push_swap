@@ -116,7 +116,25 @@ void	sort_medium(t_program *p)
 		}
 		c++;
 	}
+	ft_putstr_fd("ranks em B: ", 2);
+	t_stack *t = p->b;
+	while (t)
+	{
+		ft_printfd(2, "%d ", t->rank);
+		t = t->next;
+	}
+	ft_putstr_fd("\n", 2);
 	init_a(p);
+	while (p->b)
+	{
+		m = best_move_ba(p);
+		//ft_printfd(2, "a=%d b=%d cost=%d\n", p->len_a, p->len_b, m.cost);
+		execute_move_ba(p, &m);
+		ft_putstr_fd("B: ", 2);
+		t_stack *t = p->b;
+		while (t) { ft_printfd(2, "%d ", t->rank); t = t->next; }
+		ft_putstr_fd("\n", 2);
+	}
 	while (p->b)
 	{
 		m = best_move_ba(p);
