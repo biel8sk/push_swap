@@ -1,39 +1,13 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   find_target.c                                      :+:      :+:    :+:   */
+/*   dev_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: daneves <daneves@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/08/30 20:56:05 by daneves           #+#    #+#             */
-/*   Updated: 2026/08/30 20:56:05 by daneves          ###   ########.fr       */
+/*   Created: 2026/08/31 00:10:13 by daneves           #+#    #+#             */
+/*   Updated: 2026/08/31 00:10:13 by daneves          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-int	rotate_cost(int pos, int len, int *dir)
-{
-	if (pos < len/2)
-	{
-		*dir = 1;
-		return (pos);
-	}
-	*dir = -1;
-	return (len - pos);
-}
-
-void	set_pos(t_stack *stk)
-{
-	int	i;
-
-	i = 0;
-	while (stk)
-	{
-		stk->pos = i++;
-		stk = stk->next;
-	}
-	return ;
-}
-
-int	find_insert_pos(t_stack *a, int rank, int len_a);

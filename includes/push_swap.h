@@ -17,6 +17,7 @@
 
 typedef struct s_stack {
 	int				content;
+	int				pos;
 	int				rank;
 	int				chunk;
 	struct s_stack	*next;
@@ -65,7 +66,11 @@ void	stack_clear(t_stack **st);
 int		stack_contains(int element, t_stack *st);
 double	compute_disorder(t_stack *stack_a);
 void	print_st(t_stack *stk, char stack);
+
 void	sort_simple_stk(t_program *p, char stk_name);
+void	set_pos(t_stack *stk);
+int		rotate_cost(int pos, int len, int *dir);
+int		find_insert_pos(t_stack *stk, int rank, int len_stk);
 
 int		ft_sqrt(int n);
 
