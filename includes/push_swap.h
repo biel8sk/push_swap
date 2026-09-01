@@ -52,9 +52,21 @@ typedef struct s_program {
 	t_flag		fl;
 	t_ops_count	operations_count;
 	size_t		len;
+	int			len_a;
+	int			len_b;
 	int			num_chunks;
 	int			chunk_size;
 }	t_program;
+
+typedef struct s_move
+{
+	t_stack	*node;
+	int		cost;
+	int		rot_a;
+	int		rot_b;
+	int		dir_a;
+	int		dir_b;
+}	t_move;
 
 t_stack	*ft_new_node(int content);
 void	ft_push_node(t_stack **lst, t_stack *new);
@@ -67,10 +79,15 @@ int		stack_contains(int element, t_stack *st);
 double	compute_disorder(t_stack *stack_a);
 void	print_st(t_stack *stk, char stack);
 
+int		ft_max(int a, int b);
 void	sort_simple_stk(t_program *p, char stk_name);
-void	set_pos(t_stack *stk);
+int		set_pos(t_stack *stk);
+int		pos_of_min(t_stack *stk);
 int		rotate_cost(int pos, int len, int *dir);
 int		find_insert_pos(t_stack *stk, int rank, int len_stk);
+void	move_cost_ba(t_program *p, t_stack *node, t_move *m);
+t_move	best_move_ba(t_program *p);
+void	execute_move_ba(t_program *p, t_move *m);
 
 int		ft_sqrt(int n);
 
