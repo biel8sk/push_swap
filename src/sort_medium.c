@@ -10,7 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "push_swap.h"
 
 void	assign_labels(t_stack *stk, int chunk_size)
@@ -50,22 +49,6 @@ void	preprocess(t_program *p)
 	assign_labels(p->a, p->chunk_size);
 }
 
-// void	preprocess(t_program *p)
-// {
-// 	int		n;
-// 	char	*env;
-
-// 	n = (int)p->len;
-// 	if (n <= 1)
-// 		return ;
-// 	p->num_chunks = ft_sqrt(n);
-// 	env = getenv("PS_CHUNKS");
-// 	if (env)
-// 		p->num_chunks = ft_atoi(env);
-// 	p->chunk_size = (n + p->num_chunks - 1) / p->num_chunks;
-// 	assign_labels(p->a, p->chunk_size);
-// }
-
 int	has_chunk(t_stack *stk, int c)
 {
 	while (stk)
@@ -76,21 +59,6 @@ int	has_chunk(t_stack *stk, int c)
 	}
 	return (0);
 }
-
-// t_stack	*find_min_in_chunk(t_stack *a, int chunk_num)
-// {
-// 	t_stack	*min_stk;
-
-// 	min_stk = NULL;
-// 	while (a)
-// 	{
-// 		if (a->chunk == chunk_num)
-// 			if (!min_stk || a->rank < min_stk->rank)
-// 				min_stk = a;
-// 		a = a->next;
-// 	}
-// 	return (min_stk);
-// }
 
 void	init_a(t_program *p)
 {
@@ -149,6 +117,3 @@ void	sort_medium(t_program *p)
 	}
 	align_a(p);
 }
-
-//Veeer::::
-// Será que pra complex conseguimos deixar metade dos chunks em a e ir trabalhando ao mesmo tempo?

@@ -157,7 +157,8 @@ int	main(int argc, char **argv)
 	// ft_printf("Stack Criada!!!!\n");
 	// print_st(p->a, 'a');
 	//sort_medium(p);
-	sort_simple(p);
+	//sort_simple(p);
+	sort_complex(p);
 	print_stack(p);
 	stack_clear(&stack);
 }

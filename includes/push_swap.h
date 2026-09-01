@@ -80,7 +80,8 @@ double	compute_disorder(t_stack *stack_a);
 void	print_st(t_stack *stk, char stack);
 
 int		ft_max(int a, int b);
-void	sort_simple_stk(t_program *p, char stk_name);
+void	assign_labels(t_stack *stk, int chunk_size);
+void	preprocess(t_program *p);
 int		set_pos(t_stack *stk);
 int		pos_of_min(t_stack *stk);
 int		rotate_cost(int pos, int len, int *dir);
@@ -105,5 +106,6 @@ void	rrr(t_program *p);
 
 void	sort_simple(t_program *p);
 void	sort_medium(t_program *p);
+void	sort_complex(t_program *p);
 
 #endif
