@@ -10,7 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "push_swap.h"
 
 int	find_highest_stack(t_stack *stack)
@@ -28,13 +27,15 @@ int	find_highest_stack(t_stack *stack)
 	return (highest);
 }
 
-
 void	sort_simple(t_program *p)
 {
 	int		highest;
 
 	if (p->len <= 1)
 		return ;
+	if (!p->a)
+		return ;
+	highest = p->a->content;
 	while (p->a)
 	{
 		highest = find_highest_stack(p->a);

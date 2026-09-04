@@ -3,7 +3,7 @@ CC          = cc
 C_FLAGS     = -Wall -Werror -Wextra -I includes -g
 SRCS_FILES  = main.c stack_utils.c operations_base.c mult_operations_ps.c push_operations.c rotate_operations.c\
 			  sort_simple.c swap_operations.c compute_disorder.c sort_medium.c sorting_utils.c lookahead.c dev_utils.c\
-			  sort_complex.c flags.c parse_args.c print_bench.c
+			  sort_complex.c flags.c parse_args.c print_bench.c best_move.c chucks.c
 SRC_DIR     = src/
 SRCS        = $(addprefix $(SRC_DIR), $(SRCS_FILES))
 

@@ -12,6 +12,18 @@
 
 #include "push_swap.h"
 
+void	append_node(t_stack **stk, t_stack **tail, t_stack *node)
+{
+	if (!*stk)
+		*stk = node;
+	else
+	{
+		(*tail)->next = node;
+		node->previous = *tail;
+	}
+	*tail = node;
+}
+
 t_stack	*create_stack(char **argv, int argc, size_t *len)
 {
 	int		i;
@@ -30,14 +42,7 @@ t_stack	*create_stack(char **argv, int argc, size_t *len)
 		node = ft_new_node(element);
 		if (!node)
 			return (stack_clear(&stk), NULL);
-		if (!stk)
-			stk = node;
-		else
-		{
-			tail->next = node;
-			node->previous = tail;
-		}
-		tail = node;
+		append_node(&stk, &tail, node);
 		i++;
 		(*len)++;
 	}
@@ -54,20 +59,6 @@ void	run_sort(t_program *p)
 		sort_medium(p);
 	else
 		sort_complex(p);
-}
-
-void	print_stack(t_program *p)
-{
-	t_stack	*curr;
-
-	curr = p->a;
-	ft_putstr_fd("stack ordenada: ", 2);
-	while (curr)
-	{
-		ft_printfd(2, "%d -> ", curr->content);
-		curr = curr->next;
-	}
-	ft_putstr_fd("\n", 2);
 }
 
 t_program	*create_program(void)

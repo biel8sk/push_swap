@@ -35,14 +35,9 @@ void	sa(t_program *p)
 
 void	sb(t_program *p)
 {
-	t_stack	*st;
-
-	st = p->b;
-	if (!st || !st->next)
+	if (!p->b || !p->b->next)
 		return ;
-	swap_top(&st);
+	swap_top(&p->b);
 	p->operations_count.sb++;
 	ft_putstr_fd("sb\n", 1);
 }
-
-

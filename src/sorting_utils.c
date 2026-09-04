@@ -12,7 +12,6 @@
 
 #include "push_swap.h"
 
-
 int	ft_sqrt(int n)
 {
 	int	i;
@@ -25,37 +24,6 @@ int	ft_sqrt(int n)
 	return (i - 1);
 }
 
-int	find_highest_rank(t_stack *stk)
-{
-	int	highest;
-
-	if (stk)
-		highest = stk->rank;
-	while (stk)
-	{
-		if (stk->rank > highest)
-			highest = stk->rank;
-		stk = stk->next;
-	}
-	return (highest);
-}
-
-
-int	find_smallest_rank(t_stack *stk)
-{
-	int	smallest;
-
-	if (stk)
-		smallest = stk->rank;
-	while (stk)
-	{
-		if (stk->rank < smallest)
-			smallest = stk->rank;
-		stk = stk->next;
-	}
-	return (smallest);
-}
-
 int	stk_is_sorted(t_stack *stk)
 {
 	while (stk && stk->next)
@@ -66,30 +34,3 @@ int	stk_is_sorted(t_stack *stk)
 	}
 	return (1);
 }
-void	rotate_stk(t_program *p, char n)
-{
-	if (n == 'a')
-		ra(p);
-	else
-		rb(p);
-}
-
-void	swap_stk(t_program *p, char n)
-{
-	if (n == 'a')
-		sa(p);
-	else
-		sb(p);
-}
-
-void	print_rank(t_stack *stk)
-{
-	ft_printfd(2, "[dbg] ranks: ");
-	while (stk)
-	{
-		ft_printfd(2, "%d ", stk->rank);
-		stk = stk->next;
-	}
-	ft_printfd(2, "\n");
-}
-

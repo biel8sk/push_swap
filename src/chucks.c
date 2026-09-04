@@ -1,65 +1,47 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   dev_utils.c                                        :+:      :+:    :+:   */
+/*   chucks.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: daneves <daneves@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/08/31 00:10:13 by daneves           #+#    #+#             */
-/*   Updated: 2026/08/31 00:10:13 by daneves          ###   ########.fr       */
+/*   Created: 2026/09/04 06:23:36 by daneves           #+#    #+#             */
+/*   Updated: 2026/09/04 06:23:36 by daneves          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	ft_max(int a, int b)
+void	assign_chunks(t_stack *stk, int chunk_size)
 {
-	if (a > b)
-		return (a);
-	return (b);
-}
-
-int	pos_of_min(t_stack *stk)
-{
-	int	min;
-	int	pos;
-
-	if (!stk)
-		return (0);
-	min = stk->rank;
-	pos = stk->pos;
 	while (stk)
 	{
-		if (stk->rank < min)
-		{
-			min = stk->rank;
-			pos = stk->pos;
-		}
+		stk->chunk = stk->rank / chunk_size;
 		stk = stk->next;
 	}
-	return (pos);
 }
 
-int	set_pos(t_stack *stk)
+void	preprocess_medium(t_program *p)
 {
-	int	i;
+	int	n;
 
-	i = 0;
-	while (stk)
-	{
-		stk->pos = i++;
-		stk = stk->next;
-	}
-	return (i);
+	n = (int)p->len;
+	if (n <= 1)
+		return ;
+	p->num_chunks = ft_sqrt(n) / 3;
+	if (p->num_chunks < 1)
+		p->num_chunks = 1;
+	p->chunk_size = (n + p->num_chunks - 1) / p->num_chunks;
+	assign_chunks(p->a, p->chunk_size);
 }
 
-void	print_rank(t_stack *stk)
+int	has_chunk(t_stack *stk, int c)
 {
-	ft_printfd(2, "[dbg] ranks: ");
 	while (stk)
 	{
-		ft_printfd(2, "%d ", stk->rank);
+		if (stk->chunk == c)
+			return (1);
 		stk = stk->next;
 	}
-	ft_printfd(2, "\n");
+	return (0);
 }

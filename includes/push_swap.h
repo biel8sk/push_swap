@@ -10,12 +10,12 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 # include "../libs/libft.h"
 
-typedef struct s_stack {
+typedef struct s_stack
+{
 	int				content;
 	int				pos;
 	int				rank;
@@ -24,7 +24,8 @@ typedef struct s_stack {
 	struct s_stack	*previous;
 }	t_stack;
 
-typedef enum e_flag {
+typedef enum e_flag
+{
 	NONE,
 	SIMPLE,
 	MEDIUM,
@@ -33,7 +34,8 @@ typedef enum e_flag {
 	INVALID,
 }	t_flag;
 
-typedef struct s_ops_count {
+typedef struct s_ops_count
+{
 	int	sa;
 	int	sb;
 	int	ss;
@@ -47,7 +49,8 @@ typedef struct s_ops_count {
 	int	rrr;
 }	t_ops_count;
 
-typedef struct s_program {
+typedef struct s_program
+{
 	t_stack		*a;
 	t_stack		*b;
 	t_flag		selector;
@@ -84,8 +87,6 @@ double	compute_disorder(t_stack *stack_a);
 void	print_st(t_stack *stk, char stack);
 
 int		ft_max(int a, int b);
-void	assign_labels(t_stack *stk, int chunk_size);
-//void	preprocess(t_program *p);
 int		set_pos(t_stack *stk);
 int		pos_of_min(t_stack *stk);
 int		rotate_cost(int pos, int len, int *dir);
@@ -106,6 +107,8 @@ int		stk_is_sorted(t_stack *stk);
 void	print_rank(t_stack *stk);
 t_flag	resolve_strategy(t_flag sel, double disorder);
 void	print_bench(t_program *p);
+void	preprocess_medium(t_program *p);
+int		has_chunk(t_stack *stk, int c);
 
 void	sa(t_program *p);
 void	sb(t_program *p);
