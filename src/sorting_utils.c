@@ -84,11 +84,12 @@ void	swap_stk(t_program *p, char n)
 
 void	print_rank(t_stack *stk)
 {
+	ft_printfd(2, "[dbg] ranks: ");
 	while (stk)
 	{
-		ft_printf("%d ", stk->rank);
+		ft_printfd(2, "%d ", stk->rank);
 		stk = stk->next;
 	}
-	ft_printf("\n");
+	ft_printfd(2, "\n");
 }
 

@@ -104,6 +104,7 @@ void	free_program(t_program *p);
 void	assign_ranks(t_stack *stk);
 int		stk_is_sorted(t_stack *stk);
 void	print_rank(t_stack *stk);
+t_flag	resolve_strategy(t_flag sel, double disorder);
 
 void	sa(t_program *p);
 void	sb(t_program *p);
