@@ -50,3 +50,13 @@ int	ps_flags(int argc, char **argv, t_program *p)
 		p->selector = ADAPTIVE;
 	return (i);
 }
+t_flag	resolve_strategy(t_flag sel, double disorder)
+{
+	if (sel != ADAPTIVE)
+		return (sel);
+	if (disorder < 0.2)
+		return (SIMPLE);
+	if (disorder < 0.5)
+		return (MEDIUM);
+	return (COMPLEX);
+}

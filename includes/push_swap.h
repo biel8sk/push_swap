@@ -25,11 +25,11 @@ typedef struct s_stack {
 }	t_stack;
 
 typedef enum e_flag {
+	NONE,
 	SIMPLE,
 	MEDIUM,
 	COMPLEX,
 	ADAPTIVE,
-	NONE,
 	INVALID,
 }	t_flag;
 
@@ -85,7 +85,7 @@ void	print_st(t_stack *stk, char stack);
 
 int		ft_max(int a, int b);
 void	assign_labels(t_stack *stk, int chunk_size);
-void	preprocess(t_program *p);
+//void	preprocess(t_program *p);
 int		set_pos(t_stack *stk);
 int		pos_of_min(t_stack *stk);
 int		rotate_cost(int pos, int len, int *dir);
@@ -99,6 +99,11 @@ t_flag	flag_from_str(char *arg);
 int		ps_atoi(const char *str, int *out);
 
 int		ft_sqrt(int n);
+int		ps_error(void);
+void	free_program(t_program *p);
+void	assign_ranks(t_stack *stk);
+int		stk_is_sorted(t_stack *stk);
+void	print_rank(t_stack *stk);
 
 void	sa(t_program *p);
 void	sb(t_program *p);

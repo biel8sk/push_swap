@@ -71,37 +71,43 @@ t_stack	*create_stack(char **argv, int argc, size_t *len)
 	int		element;
 	t_stack	*node;
 	t_stack	*stk;
-	t_stack *tail;
+	t_stack	*tail;
 
-	i = 1;
+	i = 0;
 	stk = NULL;
 	tail = NULL;
-	if (argv[i][0] == '-' && argv[i][1] == '-')
-		i++;
 	while (i < argc)
 	{
-		element = ft_atoi(argv[i]);
-		if ((element == 0 && argv[i][0] != '0') || stack_contains(element, stk))
+		if (!ps_atoi(argv[i], &element) || stack_contains(element, stk))
 			return (stack_clear(&stk), NULL);
 		node = ft_new_node(element);
-		if (!stk){
+		if (!node)
+			return (stack_clear(&stk), NULL);
+		if (!stk)
 			stk = node;
-			tail = node;
-		}
 		else
 		{
 			tail->next = node;
 			node->previous = tail;
-			tail = node;
 		}
+		tail = node;
 		i++;
 		(*len)++;
 	}
-	ft_printfd(2, "tamanho da stack: %u\n", *len);
 	return (stk);
 }
 
-
+void	run_sort(t_program *p)
+{
+	if (stk_is_sorted(p->a))
+		return ;
+	if (p->method == SIMPLE)
+		sort_simple(p);
+	else if (p->method == MEDIUM)
+		sort_medium(p);
+	else
+		sort_complex(p);
+}
 
 void	print_stack(t_program *p)
 {
@@ -117,48 +123,87 @@ void	print_stack(t_program *p)
 	ft_putstr_fd("\n", 2);
 }
 
-t_program	*create_program(t_stack *st, t_flag fl, size_t len)
+// t_program	*create_program(t_stack *st, t_flag fl, size_t len)
+// {
+// 	t_program	*p;
+// 	t_ops_count	*ops;
+
+// 	p = malloc(sizeof(t_program));
+// 	if (!p)
+// 		return (NULL);
+// 	ops = malloc(sizeof(t_ops_count));
+// 	if (!ops)
+// 		return (free(p), NULL);
+// 	*ops = (t_ops_count){0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+// 	p->a = st;
+// 	p->b = NULL;
+// 	p->operations_count = *ops;
+// 	p->fl = fl;
+// 	p->len = len;
+// 	return (p);
+// }
+
+t_program	*create_program(void)
 {
 	t_program	*p;
-	t_ops_count	*ops;
 
 	p = malloc(sizeof(t_program));
 	if (!p)
 		return (NULL);
-	ops = malloc(sizeof(t_ops_count));
-	if (!ops)
-		return (free(p), NULL);
-	*ops = (t_ops_count){0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
-	p->a = st;
-	p->b = NULL;
-	p->operations_count = *ops;
-	p->fl = fl;
-	p->len = len;
+	ft_bzero(p, sizeof(t_program));
 	return (p);
 }
 
+// int	main(int argc, char **argv)
+// {
+// 	t_stack		*stack;
+// 	t_flag		flag;
+// 	double		disorder;
+// 	t_program	*p;
+// 	size_t		len;
+
+// 	if (argc < 3)
+// 		return (1);
+// 	len = 0;
+// 	stack = create_stack(argv, argc, &len);
+// 	if (!stack)
+// 		return (write(2, "Error\n", 6));
+// 	disorder = compute_disorder(stack);
+// 	flag = extract_flag(argv[1], disorder);
+// 	p = create_program(stack, flag, len);
+// 	// ft_printf("Stack Criada!!!!\n");
+// 	// print_st(p->a, 'a');
+// 	//sort_medium(p);
+// 	//sort_simple(p);
+// 	sort_complex(p);
+// 	print_stack(p);
+// 	stack_clear(&stack);
+// }
+
+
+
+
 int	main(int argc, char **argv)
 {
-	t_stack		*stack;
-	t_flag		flag;
-	double		disorder;
 	t_program	*p;
-	size_t		len;
+	int			start;
 
-	if (argc < 3)
+	p = create_program();
+	if (!p)
 		return (1);
-	len = 0;
-	stack = create_stack(argv, argc, &len);
-	if (!stack)
-		return (write(2, "Error\n", 6));
-	disorder = compute_disorder(stack);
-	flag = extract_flag(argv[1], disorder);
-	p = create_program(stack, flag, len);
-	// ft_printf("Stack Criada!!!!\n");
-	// print_st(p->a, 'a');
-	//sort_medium(p);
-	//sort_simple(p);
-	sort_complex(p);
-	print_stack(p);
-	stack_clear(&stack);
+	start = ps_flags(argc, argv, p);
+	if (start < 0)
+		return (free_program(p), ps_error());
+	if (start >= argc)
+		return (free_program(p), 0);
+	p->a = create_stack(argv + start, argc - start, &p->len);
+	if (!p->a)
+		return (free_program(p), ps_error());
+	assign_ranks(p->a);
+	ft_printfd(2, "len=%u sel=%d bench=%d start=%d\n",
+		p->len, p->selector, p->bench, start);
+	print_st(p->a, 'a');
+	print_rank(p->a);
+	p->disorder = compute_disorder(p->a);
+	return (0);
 }

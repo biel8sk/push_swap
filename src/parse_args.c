@@ -40,3 +40,40 @@ int	ps_atoi(const char *str, int *out)
 	*out = (int)(n * sign);
 	return (1);
 }
+
+int	ps_error(void)
+{
+	write(2, "Error\n", 6);
+	return (1);
+}
+
+void	free_program(t_program *p)
+{
+	if (!p)
+		return ;
+	stack_clear(&p->a);
+	stack_clear(&p->b);
+	free(p);
+}
+
+void	assign_ranks(t_stack *stk)
+{
+	t_stack	*curr;
+	t_stack	*other;
+	int		count;
+
+	curr = stk;
+	while (curr)
+	{
+		count = 0;
+		other = stk;
+		while (other)
+		{
+			if (other->content < curr->content)
+				count++;
+			other = other->next;
+		}
+		curr->rank = count;
+		curr = curr->next;
+	}
+}

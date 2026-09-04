@@ -59,7 +59,7 @@ void	sort_complex(t_program *p)
 	if (p->len <= 1)
 		return ;
 	//c = 0;
-	preprocess(p);
+	//preprocess(p);
 	max_bits = 0;
 	// while (c < p->num_chunks)
 	// {
@@ -87,10 +87,10 @@ void	sort_complex(t_program *p)
 	while ((p->len - 1) >> max_bits)
 		max_bits++;
 	bit = 0;
-	ft_printfd(2, "\nIncio A\n:");
-	print_st(p->a, 'a');
-	ft_printfd(2, "\nIncio B\n:");
-	print_st(p->b, 'b');
+	// ft_printfd(2, "\nIncio A\n:");
+	// print_st(p->a, 'a');
+	// ft_printfd(2, "\nIncio B\n:");
+	// print_st(p->b, 'b');
 	while (bit < max_bits)
 	{
 		i = 0;
@@ -103,16 +103,16 @@ void	sort_complex(t_program *p)
 			i++;
 		}
 		
-		ft_printfd(2, "\nA\n:");
-		print_st(p->a, 'a');
-		ft_printfd(2, "\nB\n:");
-		print_st(p->b, 'b');
+		// ft_printfd(2, "\nA\n:");
+		// print_st(p->a, 'a');
+		// ft_printfd(2, "\nB\n:");
+		// print_st(p->b, 'b');
 		while (p->b)
-			pa(p);
-		ft_printfd(2, "\nIncio A:");
-		print_st(p->a, 'a');
-		ft_printfd(2, "\nIncio B:");
-		print_st(p->b, 'b');
+		// 	pa(p);
+		// ft_printfd(2, "\nIncio A:");
+		// print_st(p->a, 'a');
+		// ft_printfd(2, "\nIncio B:");
+		// print_st(p->b, 'b');
 		bit++;
 	}
 }

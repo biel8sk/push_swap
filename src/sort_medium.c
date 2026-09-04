@@ -35,6 +35,16 @@ void	assign_labels(t_stack *stk, int chunk_size)
 	}
 }
 
+void	assign_chunks(t_stack *stk, int chunk_size)
+{
+	while (stk)
+	{
+		stk->chunk = stk->rank / chunk_size;
+		stk = stk->next;
+	}
+}
+
+
 void	preprocess(t_program *p)
 {
 	int	n;
@@ -46,7 +56,7 @@ void	preprocess(t_program *p)
 	if (p->num_chunks < 1)
 	p->num_chunks = 1;
 	p->chunk_size = (n + p->num_chunks - 1) / p->num_chunks; //para arrendodar pra cima, [n]85 + ( [num_chucks]9 - 1) = 93 / 9 = 10. Se fosse 85 daria 9 e sobraria 4 ns
-	assign_labels(p->a, p->chunk_size);
+	assign_chunks(p->a, p->chunk_size);
 }
 
 int	has_chunk(t_stack *stk, int c)
