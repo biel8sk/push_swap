@@ -108,7 +108,7 @@ void	sort_complex(t_program *p)
 		// ft_printfd(2, "\nB\n:");
 		// print_st(p->b, 'b');
 		while (p->b)
-		// 	pa(p);
+			pa(p);
 		// ft_printfd(2, "\nIncio A:");
 		// print_st(p->a, 'a');
 		// ft_printfd(2, "\nIncio B:");

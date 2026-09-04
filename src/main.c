@@ -98,13 +98,11 @@ int	main(int argc, char **argv)
 	if (!p->a)
 		return (free_program(p), ps_error());
 	assign_ranks(p->a);
-	ft_printfd(2, "len=%u sel=%d bench=%d start=%d\n",
-		p->len, p->selector, p->bench, start);
-	print_st(p->a, 'a');
-	print_rank(p->a);
 	p->disorder = compute_disorder(p->a);
 	p->method = resolve_strategy(p->selector, p->disorder);
 	run_sort(p);
+	if (p->bench)
+		print_bench(p);
 	free_program(p);
 	return (0);
 }
