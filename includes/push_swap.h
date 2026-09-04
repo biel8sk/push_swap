@@ -28,7 +28,8 @@ typedef enum e_flag {
 	SIMPLE,
 	MEDIUM,
 	COMPLEX,
-	ADAPTATIVE,
+	ADAPTIVE,
+	NONE,
 	INVALID,
 }	t_flag;
 
@@ -49,7 +50,10 @@ typedef struct s_ops_count {
 typedef struct s_program {
 	t_stack		*a;
 	t_stack		*b;
-	t_flag		fl;
+	t_flag		selector;
+	t_flag		method;
+	int			bench;
+	double		disorder;
 	t_ops_count	operations_count;
 	size_t		len;
 	int			len_a;
@@ -89,6 +93,10 @@ int		find_insert_pos(t_stack *stk, int rank, int len_stk);
 void	move_cost_ba(t_program *p, t_stack *node, t_move *m);
 t_move	best_move_ba(t_program *p);
 void	execute_move_ba(t_program *p, t_move *m);
+
+int		ps_flags(int argc, char **argv, t_program *p);
+t_flag	flag_from_str(char *arg);
+int		ps_atoi(const char *str, int *out);
 
 int		ft_sqrt(int n);
 
